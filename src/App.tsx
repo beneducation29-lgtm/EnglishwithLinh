@@ -122,15 +122,15 @@ export default function App() {
         <main className="flex-1 p-4 sm:p-6 lg:p-8">
           {currentTab === 'dashboard' && (
             <>
-            <Dashboard
-              profile={profile}
-              onNavigate={(tab) => setCurrentTab(tab)}
-              onOpenDiagnostic={() => setIsDiagnosticOpen(true)}
-              onStartGuidedSession={() => setIsGuidedSessionOpen(true)}
-              onLogTime={handleLogQuickTime}
-              onOpenAITutor={() => setIsAITutorOpen(true)}
-            />
-            <GradeCurriculum currentGrade={profile.grade} />
+              <Dashboard
+                profile={profile}
+                onNavigate={(tab) => setCurrentTab(tab)}
+                onOpenDiagnostic={() => setIsDiagnosticOpen(true)}
+                onStartGuidedSession={() => setIsGuidedSessionOpen(true)}
+                onLogTime={handleLogQuickTime}
+                onOpenAITutor={() => setIsAITutorOpen(true)}
+              />
+              <GradeCurriculum currentGrade={profile.grade} />
             </>
           )}
 
