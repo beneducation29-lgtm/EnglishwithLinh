@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { BookOpen, GraduationCap, CheckCircle2, ChevronDown, ChevronUp, Lightbulb, PenLine, MessageCircle, BookMarked } from 'lucide-react';
-import { supplementaryEnglishLessons } from '../../data/supplementaryEnglishLessons';
+import { supplementaryEnglishLessons } from '../../../data/supplementaryEnglishLessons';
 
 type Grade = 10 | 11 | 12;
 
