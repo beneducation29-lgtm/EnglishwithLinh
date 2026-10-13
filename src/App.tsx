@@ -121,6 +121,7 @@ export default function App() {
         {/* Viewport Router */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8">
           {currentTab === 'dashboard' && (
+            <>
             <Dashboard
               profile={profile}
               onNavigate={(tab) => setCurrentTab(tab)}
@@ -130,6 +131,7 @@ export default function App() {
               onOpenAITutor={() => setIsAITutorOpen(true)}
             />
             <GradeCurriculum currentGrade={profile.grade} />
+            </>
           )}
 
           {currentTab === 'listening' && (
