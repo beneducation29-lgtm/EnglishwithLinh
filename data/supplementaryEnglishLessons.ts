@@ -176,6 +176,139 @@ export const supplementaryEnglishLessons: EnglishLessonContent[] = [
       task: 'Write 150–180 words explaining which skills schools should help students develop for future employment.',
       checklist: ['Introduce the issue and your position.', 'Explain at least two skills.', 'Use a relative clause accurately.', 'Include an example to support one point.', 'Review paragraph structure, grammar, and word choice.']
     }
+  },
+  {
+    id: 'g10-u2-family-life',
+    grade: 10,
+    unit: 2,
+    title: 'Family Life and Shared Responsibilities',
+    titleVi: 'Đời sống gia đình và trách nhiệm chung',
+    theme: 'Family and community',
+    level: 'A2',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Talk about household chores and family responsibilities.', 'Use should, have to and need to to express advice or obligation.', 'Explain how sharing tasks can support family relationships.'],
+    vocabulary: [
+      { word: 'household chores', ipa: '/ˈhaʊshəʊld tʃɔːz/', meaningVi: 'việc nhà', example: 'Everyone can help with household chores.', exampleVi: 'Mọi người đều có thể giúp làm việc nhà.' },
+      { word: 'share responsibility', ipa: '/ʃeə rɪˌspɒnsəˈbɪləti/', meaningVi: 'chia sẻ trách nhiệm', example: 'My brother and I share responsibility for cleaning.', exampleVi: 'Anh/em trai tôi và tôi chia sẻ trách nhiệm dọn dẹp.' },
+      { word: 'do the laundry', ipa: '/duː ðə ˈlɔːndri/', meaningVi: 'giặt quần áo', example: 'I do the laundry at the weekend.', exampleVi: 'Tôi giặt quần áo vào cuối tuần.' },
+      { word: 'supportive', ipa: '/səˈpɔːtɪv/', meaningVi: 'biết hỗ trợ, động viên', example: 'A supportive family listens to each other.', exampleVi: 'Một gia đình biết hỗ trợ sẽ lắng nghe nhau.' },
+      { word: 'independent', ipa: '/ˌɪndɪˈpendənt/', meaningVi: 'tự lập', example: 'Doing simple chores helps teenagers become independent.', exampleVi: 'Làm việc nhà đơn giản giúp thanh thiếu niên tự lập hơn.' }
+    ],
+    grammar: {
+      focus: 'Should, have to and need to',
+      formula: 'should + V (advice); have to / need to + V (obligation or necessity).',
+      explanationVi: 'Should thường dùng để đưa ra lời khuyên. Have to diễn tả việc phải làm do quy định hoặc hoàn cảnh; need to nhấn mạnh sự cần thiết.',
+      examples: [
+        { en: 'You should make a weekly chore list.', vi: 'Bạn nên lập danh sách việc nhà hằng tuần.' },
+        { en: 'We have to keep the kitchen clean.', vi: 'Chúng tôi phải giữ bếp sạch sẽ.' },
+        { en: 'I need to help my grandparents after school.', vi: 'Tôi cần giúp ông bà sau giờ học.' }
+      ]
+    },
+    reading: {
+      title: 'A Fairer Family Routine',
+      text: 'In Mai’s family, everyone has a busy schedule. Her parents work, and Mai and her older brother attend school and extra classes. Last month, they discussed how to make home life easier. They wrote down the household chores and shared them fairly. Mai now prepares dinner twice a week, while her brother takes out the rubbish and does the laundry on Saturday. They still change the plan when someone has an exam or feels unwell. Mai says the new routine saves time and helps the family appreciate each other’s efforts.',
+      questions: [
+        { id: 'g10-u2-q1', prompt: 'What did Mai’s family do to improve their routine?', options: ['They stopped doing chores.', 'They shared household chores fairly.', 'They added more classes.', 'They asked Mai to do every task.'], answerIndex: 1, explanationVi: 'Gia đình Mai liệt kê việc nhà rồi phân chia công bằng giữa các thành viên.' },
+        { id: 'g10-u2-q2', prompt: 'Why is the plan flexible?', options: ['People may have exams or feel unwell.', 'Nobody has a schedule.', 'The family does not value time.', 'Mai refuses to help.'], answerIndex: 0, explanationVi: 'Gia đình điều chỉnh kế hoạch khi có người thi cử hoặc không khỏe.' }
+      ]
+    },
+    speaking: {
+      scenario: 'Talking with a classmate about family routines',
+      prompt: 'Describe two chores you do or could do at home and explain how your family shares responsibilities.',
+      usefulExpressions: ['At home, I usually...', 'I have to...', 'I think we should...', 'It is fair to...', 'This helps my family because...']
+    },
+    writing: {
+      task: 'Write 80–100 words about how teenagers can contribute to a happy family life.',
+      checklist: ['Mention at least two responsibilities.', 'Use should and have to or need to.', 'Include three words from the vocabulary list.', 'Give a reason or example.', 'Check verb forms and punctuation.']
+    }
+  },
+  {
+    id: 'g11-u2-asean-community',
+    grade: 11,
+    unit: 2,
+    title: 'Learning about ASEAN and Regional Cooperation',
+    titleVi: 'Tìm hiểu ASEAN và hợp tác khu vực',
+    theme: 'Culture and global citizenship',
+    level: 'B1',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Describe ways young people can learn about neighbouring countries.', 'Use passive voice to focus on actions and outcomes.', 'Explain the value of cultural exchange and cooperation.'],
+    vocabulary: [
+      { word: 'regional cooperation', ipa: '/ˈriːdʒənəl kəʊˌɒpəˈreɪʃən/', meaningVi: 'hợp tác khu vực', example: 'Regional cooperation can support shared goals.', exampleVi: 'Hợp tác khu vực có thể hỗ trợ những mục tiêu chung.' },
+      { word: 'cultural exchange', ipa: '/ˈkʌltʃərəl ɪksˈtʃeɪndʒ/', meaningVi: 'giao lưu văn hóa', example: 'Our school organised a cultural exchange.', exampleVi: 'Trường chúng tôi tổ chức một hoạt động giao lưu văn hóa.' },
+      { word: 'diversity', ipa: '/daɪˈvɜːsəti/', meaningVi: 'sự đa dạng', example: 'Students learn to respect cultural diversity.', exampleVi: 'Học sinh học cách tôn trọng sự đa dạng văn hóa.' },
+      { word: 'neighbouring countries', ipa: '/ˈneɪbərɪŋ ˈkʌntriz/', meaningVi: 'các quốc gia láng giềng', example: 'We studied traditions in neighbouring countries.', exampleVi: 'Chúng tôi tìm hiểu truyền thống ở các nước láng giềng.' },
+      { word: 'mutual understanding', ipa: '/ˈmjuːtʃuəl ˌʌndəˈstændɪŋ/', meaningVi: 'sự thấu hiểu lẫn nhau', example: 'Listening carefully builds mutual understanding.', exampleVi: 'Lắng nghe cẩn thận xây dựng sự thấu hiểu lẫn nhau.' }
+    ],
+    grammar: {
+      focus: 'Passive voice in the present and past simple',
+      formula: 'Present: am/is/are + past participle; Past: was/were + past participle.',
+      explanationVi: 'Câu bị động nhấn mạnh người hoặc vật chịu tác động hay kết quả của hành động. Dùng be theo thì và quá khứ phân từ của động từ chính.',
+      examples: [
+        { en: 'Cultural festivals are celebrated across the region.', vi: 'Các lễ hội văn hóa được tổ chức khắp khu vực.' },
+        { en: 'The student exchange was organised by our school.', vi: 'Chương trình trao đổi học sinh được trường chúng tôi tổ chức.' }
+      ]
+    },
+    reading: {
+      title: 'A Classroom without Borders',
+      text: 'A group of students joined an online exchange with teenagers from two neighbouring countries. Before the meeting, each class prepared a short presentation about food, school life and local celebrations. During the exchange, students asked questions instead of making assumptions about unfamiliar customs. They discovered similarities as well as differences. Their teacher explained that regional cooperation is not only discussed at official meetings; it can also begin with respectful conversations, curiosity and shared projects among young people.',
+      questions: [
+        { id: 'g11-u2-q1', prompt: 'What did students prepare before the exchange?', options: ['A presentation about everyday culture.', 'A list of exam answers.', 'A travel advertisement.', 'A competition about grammar only.'], answerIndex: 0, explanationVi: 'Mỗi lớp chuẩn bị bài giới thiệu về ẩm thực, đời sống học đường và lễ hội địa phương.' },
+        { id: 'g11-u2-q2', prompt: 'According to the passage, cooperation can begin with...', options: ['avoiding people from other countries.', 'making assumptions about customs.', 'respectful conversations and shared projects.', 'memorising country names only.'], answerIndex: 2, explanationVi: 'Bài đọc nhấn mạnh hội thoại tôn trọng, sự tò mò và dự án chung của người trẻ.' }
+      ]
+    },
+    speaking: {
+      scenario: 'Planning an international school exchange',
+      prompt: 'Suggest one activity that could help students learn about a neighbouring country and explain what they would learn.',
+      usefulExpressions: ['One activity we could organise is...', 'Students would have a chance to...', 'This would help us understand...', 'We should be respectful of...', 'A possible challenge is...']
+    },
+    writing: {
+      task: 'Write 120–150 words explaining why cultural exchange can benefit secondary-school students.',
+      checklist: ['Write a clear introduction and conclusion.', 'Give two benefits with examples.', 'Use at least one passive sentence.', 'Use linking words such as moreover and therefore.', 'Check subject–verb agreement.']
+    }
+  },
+  {
+    id: 'g12-u2-ai-and-learning',
+    grade: 12,
+    unit: 2,
+    title: 'Artificial Intelligence and Responsible Learning',
+    titleVi: 'Trí tuệ nhân tạo và học tập có trách nhiệm',
+    theme: 'Technology and lifelong learning',
+    level: 'B2',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Evaluate benefits and limitations of AI learning tools.', 'Use reported speech to summarise advice and opinions.', 'Support a balanced argument with examples and responsible-use principles.'],
+    vocabulary: [
+      { word: 'personalised feedback', ipa: '/ˈpɜːsənəlaɪzd ˈfiːdbæk/', meaningVi: 'phản hồi được cá nhân hóa', example: 'Personalised feedback can help learners notice repeated errors.', exampleVi: 'Phản hồi cá nhân hóa có thể giúp người học nhận ra lỗi lặp lại.' },
+      { word: 'verify information', ipa: '/ˈverɪfaɪ ˌɪnfəˈmeɪʃən/', meaningVi: 'kiểm chứng thông tin', example: 'Students should verify information before using it.', exampleVi: 'Học sinh nên kiểm chứng thông tin trước khi sử dụng.' },
+      { word: 'academic integrity', ipa: '/ˌækəˈdemɪk ɪnˈteɡrəti/', meaningVi: 'tính trung thực học thuật', example: 'Academic integrity means presenting your own work honestly.', exampleVi: 'Trung thực học thuật nghĩa là trình bày trung thực bài làm của mình.' },
+      { word: 'critical thinking', ipa: '/ˌkrɪtɪkəl ˈθɪŋkɪŋ/', meaningVi: 'tư duy phản biện', example: 'Critical thinking helps students evaluate AI suggestions.', exampleVi: 'Tư duy phản biện giúp học sinh đánh giá gợi ý của AI.' },
+      { word: 'learning outcome', ipa: '/ˈlɜːnɪŋ ˈaʊtkʌm/', meaningVi: 'kết quả học tập', example: 'A good tool should improve the learning outcome, not replace effort.', exampleVi: 'Công cụ tốt nên cải thiện kết quả học tập chứ không thay thế nỗ lực.' }
+    ],
+    grammar: {
+      focus: 'Reported speech for statements and advice',
+      formula: 'said (that) + clause; advised + object + to-infinitive.',
+      explanationVi: 'Câu tường thuật thuật lại lời nói mà không trích nguyên văn. Khi động từ tường thuật ở quá khứ, thì và đại từ thường thay đổi theo ngữ cảnh; advise có thể đi với tân ngữ + to V.',
+      examples: [
+        { en: 'The teacher said that students should check AI-generated facts.', vi: 'Giáo viên nói rằng học sinh nên kiểm tra sự thật do AI tạo ra.' },
+        { en: 'Our teacher advised us to use AI as a study assistant.', vi: 'Giáo viên khuyên chúng tôi sử dụng AI như một trợ lý học tập.' }
+      ]
+    },
+    reading: {
+      title: 'Using AI without Giving Up Your Thinking',
+      text: 'AI tools can explain a difficult concept in different ways, generate practice questions and offer quick feedback. However, a fluent answer is not necessarily an accurate one. Students need to compare claims with trusted sources, protect personal information and follow their school’s rules about assistance. One useful approach is to attempt a task independently, ask a tool to explain the parts that remain unclear, and then write a final answer in their own words. Used thoughtfully, AI can support learning while responsibility remains with the student.',
+      questions: [
+        { id: 'g12-u2-q1', prompt: 'Why should students verify AI-generated information?', options: ['Fluent answers are always correct.', 'AI answers can sound convincing but be inaccurate.', 'Verification prevents all learning.', 'Schools never have rules about AI.'], answerIndex: 1, explanationVi: 'Bài đọc lưu ý câu trả lời trôi chảy không đồng nghĩa với chính xác.' },
+        { id: 'g12-u2-q2', prompt: 'Which approach best reflects responsible AI use?', options: ['Submit every generated answer unchanged.', 'Share private information to get better results.', 'Try independently, clarify gaps, then write in your own words.', 'Avoid checking sources.'], answerIndex: 2, explanationVi: 'Người học nên tự làm trước, dùng công cụ để làm rõ điểm chưa hiểu và tự viết câu trả lời cuối cùng.' }
+      ]
+    },
+    speaking: {
+      scenario: 'A class discussion about AI in education',
+      prompt: 'Give a balanced opinion on AI study tools. Mention one benefit, one risk and one rule students should follow.',
+      usefulExpressions: ['One clear benefit is...', 'A possible risk is...', 'The information should be verified because...', 'Students remain responsible for...', 'In my view, a balanced approach...']
+    },
+    writing: {
+      task: 'Write 150–180 words discussing how secondary-school students can use AI tools responsibly for learning.',
+      checklist: ['Present a balanced viewpoint.', 'Explain at least one benefit and one risk.', 'Use a reported-speech structure.', 'Include practical advice about verification or privacy.', 'Use clear paragraphs and linking expressions.']
+    }
   }
 ];
 
