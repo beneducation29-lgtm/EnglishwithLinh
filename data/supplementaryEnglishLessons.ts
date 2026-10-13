@@ -310,6 +310,139 @@ export const supplementaryEnglishLessons: EnglishLessonContent[] = [
       checklist: ['Present a balanced viewpoint.', 'Explain at least one benefit and one risk.', 'Use a reported-speech structure.', 'Include practical advice about verification or privacy.', 'Use clear paragraphs and linking expressions.']
     }
   }
+,
+  {
+    id: 'g10-u3-community-service',
+    grade: 10,
+    unit: 3,
+    title: 'Community Service and Helping Others',
+    titleVi: 'Hoạt động cộng đồng và giúp đỡ mọi người',
+    theme: 'Community and volunteering',
+    level: 'A2',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Describe simple volunteering activities.', 'Use the past simple to report a completed activity.', 'Explain how community projects can help local people.'],
+    vocabulary: [
+      { word: 'volunteer', ipa: '/ˌvɒlənˈtɪə/', meaningVi: 'tình nguyện viên; tình nguyện', example: 'Students volunteer at the local library.', exampleVi: 'Học sinh tình nguyện tại thư viện địa phương.' },
+      { word: 'donate', ipa: '/dəʊˈneɪt/', meaningVi: 'quyên góp', example: 'Our class donated books to children.', exampleVi: 'Lớp chúng tôi quyên góp sách cho trẻ em.' },
+      { word: 'elderly people', ipa: '/ˈeldəli ˈpiːpl/', meaningVi: 'người cao tuổi', example: 'The club visited elderly people on Sunday.', exampleVi: 'Câu lạc bộ thăm người cao tuổi vào Chủ nhật.' },
+      { word: 'take part in', ipa: '/teɪk pɑːt ɪn/', meaningVi: 'tham gia', example: 'I took part in a clean-up campaign.', exampleVi: 'Tôi đã tham gia chiến dịch dọn vệ sinh.' },
+      { word: 'make a difference', ipa: '/meɪk ə ˈdɪfrəns/', meaningVi: 'tạo ra thay đổi tích cực', example: 'Small acts can make a difference.', exampleVi: 'Những hành động nhỏ có thể tạo ra thay đổi tích cực.' }
+    ],
+    grammar: {
+      focus: 'Past simple for completed activities',
+      formula: 'S + V-ed / irregular past form; Did + S + base verb?',
+      explanationVi: 'Thì quá khứ đơn kể lại hành động đã xảy ra và kết thúc trong quá khứ. Câu hỏi dùng Did + chủ ngữ + động từ nguyên mẫu.',
+      examples: [
+        { en: 'We collected old books last Saturday.', vi: 'Chúng tôi đã thu gom sách cũ vào thứ Bảy tuần trước.' },
+        { en: 'Did you visit the community centre?', vi: 'Bạn đã đến trung tâm cộng đồng phải không?' }
+      ]
+    },
+    reading: {
+      title: 'One Saturday, Many Smiles',
+      text: 'Last Saturday, students at Green Hill High School organised a community day. Some students cleaned the park, while others sorted donated books and prepared activity cards for children at a nearby centre. Their teacher reminded them to ask local residents what kind of help was most useful. By lunchtime, the group had finished the main tasks and made a plan to return next month. The students learned that volunteering is not only about giving time; it is also about listening and working respectfully with others.',
+      questions: [
+        { id: 'g10-u3-q1', prompt: 'What did some students do at the community day?', options: ['They cancelled the event.', 'They cleaned the park.', 'They sold school uniforms.', 'They travelled abroad.'], answerIndex: 1, explanationVi: 'Một nhóm học sinh dọn dẹp công viên.' },
+        { id: 'g10-u3-q2', prompt: 'What did the teacher ask students to do?', options: ['Choose help without asking anyone.', 'Finish and never return.', 'Listen to local residents about useful help.', 'Work only with their friends.'], answerIndex: 2, explanationVi: 'Giáo viên nhắc các em hỏi người dân địa phương xem sự hỗ trợ nào hữu ích nhất.' }
+      ]
+    },
+    speaking: {
+      scenario: 'Reporting on a school volunteering day',
+      prompt: 'Describe a volunteering activity you joined or would like to join. Say what you did, who benefited and how you felt.',
+      usefulExpressions: ['Last weekend, we...', 'We decided to...', 'The activity helped...', 'I felt proud because...', 'Next time, I would like to...']
+    },
+    writing: {
+      task: 'Write 80–100 words about a community activity at school or in your neighbourhood.',
+      checklist: ['Use past simple for completed actions.', 'Mention who took part and who benefited.', 'Include at least three vocabulary items.', 'Explain what you learned.', 'Check irregular past forms.']
+    }
+  },
+  {
+    id: 'g11-u3-protecting-the-environment',
+    grade: 11,
+    unit: 3,
+    title: 'Small Actions to Protect the Environment',
+    titleVi: 'Hành động nhỏ để bảo vệ môi trường',
+    theme: 'Environment and sustainable living',
+    level: 'B1',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Discuss practical ways to reduce waste at school.', 'Use relative clauses to add information about people, places and things.', 'Support an environmental proposal with reasons and examples.'],
+    vocabulary: [
+      { word: 'single-use plastic', ipa: '/ˌsɪŋɡəl juːs ˈplæstɪk/', meaningVi: 'nhựa dùng một lần', example: 'Our class is trying to avoid single-use plastic.', exampleVi: 'Lớp chúng tôi đang cố tránh nhựa dùng một lần.' },
+      { word: 'reusable', ipa: '/ˌriːˈjuːzəbəl/', meaningVi: 'có thể tái sử dụng', example: 'A reusable bottle can reduce waste.', exampleVi: 'Bình có thể tái sử dụng giúp giảm rác thải.' },
+      { word: 'sort waste', ipa: '/sɔːt weɪst/', meaningVi: 'phân loại rác', example: 'Students sort waste into separate bins.', exampleVi: 'Học sinh phân loại rác vào các thùng riêng.' },
+      { word: 'conservation', ipa: '/ˌkɒnsəˈveɪʃən/', meaningVi: 'sự bảo tồn', example: 'Wildlife conservation protects natural habitats.', exampleVi: 'Bảo tồn động vật hoang dã bảo vệ môi trường sống tự nhiên.' },
+      { word: 'sustainable', ipa: '/səˈsteɪnəbəl/', meaningVi: 'bền vững', example: 'We need sustainable solutions to local problems.', exampleVi: 'Chúng ta cần giải pháp bền vững cho vấn đề địa phương.' }
+    ],
+    grammar: {
+      focus: 'Defining relative clauses',
+      formula: 'noun + who (people) / which (things) / that (people or things) + clause',
+      explanationVi: 'Mệnh đề quan hệ xác định cung cấp thông tin cần thiết để nhận diện người hoặc vật. Who thường chỉ người; which chỉ vật; that có thể dùng cho cả người và vật trong mệnh đề xác định.',
+      examples: [
+        { en: 'Students who bring reusable bottles create less waste.', vi: 'Học sinh mang bình tái sử dụng tạo ra ít rác thải hơn.' },
+        { en: 'The bins that we use are clearly labelled.', vi: 'Các thùng rác mà chúng tôi dùng có nhãn rõ ràng.' }
+      ]
+    },
+    reading: {
+      title: 'A Greener School Canteen',
+      text: 'A student council surveyed classmates about rubbish in the school canteen. Many students said that takeaway cups and plastic spoons were used only once. The council suggested placing water refill points near the dining area and offering a small discount to students who brought reusable containers. The school agreed to run a four-week trial and measure how much rubbish was collected. The project team explained that a useful environmental plan should be convenient, affordable and based on evidence rather than slogans alone.',
+      questions: [
+        { id: 'g11-u3-q1', prompt: 'What did the council suggest?', options: ['Removing drinking water.', 'Encouraging reusable containers and adding refill points.', 'Closing the canteen permanently.', 'Using more single-use plastic.'], answerIndex: 1, explanationVi: 'Hội đồng học sinh đề xuất điểm lấy nước và khuyến khích hộp đựng có thể tái sử dụng.' },
+        { id: 'g11-u3-q2', prompt: 'How would the school evaluate the trial?', options: ['By measuring the rubbish collected.', 'By counting classroom windows.', 'By cancelling the survey.', 'By choosing the most popular slogan.'], answerIndex: 0, explanationVi: 'Nhà trường sẽ đo lượng rác thu gom trong bốn tuần thử nghiệm.' }
+      ]
+    },
+    speaking: {
+      scenario: 'Presenting an environmental idea to the student council',
+      prompt: 'Suggest one realistic environmental change for your school and explain its cost, benefits and how to measure its impact.',
+      usefulExpressions: ['Our school could...', 'This would reduce...', 'Students who...', 'We could measure the result by...', 'One possible difficulty is...']
+    },
+    writing: {
+      task: 'Write 120–150 words proposing one environmental improvement for your school.',
+      checklist: ['Describe the problem clearly.', 'Propose a practical solution.', 'Use a defining relative clause.', 'Explain how the result could be measured.', 'Use linking words to connect ideas.']
+    }
+  },
+  {
+    id: 'g12-u3-lifelong-learning',
+    grade: 12,
+    unit: 3,
+    title: 'Lifelong Learning in a Changing World',
+    titleVi: 'Học tập suốt đời trong thế giới thay đổi',
+    theme: 'Education and future skills',
+    level: 'B2',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Explain why learning continues after formal education.', 'Use inversion after negative adverbials in formal emphasis.', 'Evaluate a practical plan for developing future-ready skills.'],
+    vocabulary: [
+      { word: 'upskill', ipa: '/ˌʌpˈskɪl/', meaningVi: 'nâng cao kỹ năng', example: 'Workers may upskill when their roles change.', exampleVi: 'Người lao động có thể nâng cao kỹ năng khi vai trò thay đổi.' },
+      { word: 'transferable skills', ipa: '/trænsˈfɜːrəbl skɪlz/', meaningVi: 'kỹ năng có thể chuyển đổi giữa các công việc', example: 'Communication is a transferable skill.', exampleVi: 'Giao tiếp là kỹ năng có thể dùng trong nhiều công việc.' },
+      { word: 'self-directed learning', ipa: '/ˌself dəˈrektɪd ˈlɜːnɪŋ/', meaningVi: 'học tập tự định hướng', example: 'Self-directed learning requires clear goals.', exampleVi: 'Học tự định hướng đòi hỏi mục tiêu rõ ràng.' },
+      { word: 'credible source', ipa: '/ˈkredəbəl sɔːs/', meaningVi: 'nguồn đáng tin cậy', example: 'Learners should check whether a source is credible.', exampleVi: 'Người học nên kiểm tra nguồn có đáng tin cậy hay không.' },
+      { word: 'adaptability', ipa: '/əˌdæptəˈbɪləti/', meaningVi: 'khả năng thích nghi', example: 'Adaptability helps people respond to change.', exampleVi: 'Khả năng thích nghi giúp mọi người ứng phó với thay đổi.' }
+    ],
+    grammar: {
+      focus: 'Inversion after negative adverbials (formal emphasis)',
+      formula: 'Never / Rarely / Not only + auxiliary + subject + main verb',
+      explanationVi: 'Trong văn phong trang trọng, khi một cụm phủ định như Never hoặc Rarely đứng đầu câu, cần đảo trợ động từ lên trước chủ ngữ. Cấu trúc này nên dùng vừa phải để nhấn mạnh.',
+      examples: [
+        { en: 'Never has access to information been so easy.', vi: 'Chưa bao giờ việc tiếp cận thông tin lại dễ dàng đến thế.' },
+        { en: 'Not only does lifelong learning build knowledge, but it also improves adaptability.', vi: 'Học tập suốt đời không chỉ xây dựng kiến thức mà còn cải thiện khả năng thích nghi.' }
+      ]
+    },
+    reading: {
+      title: 'Learning beyond the Classroom',
+      text: 'Formal education provides a foundation, but knowledge and workplace expectations continue to change. People can respond by taking short courses, learning from colleagues, practising a language or building a portfolio of projects. The most effective learners set a specific goal, choose credible resources and review what they have learned. They also recognise when they need help. Lifelong learning does not mean studying every hour; it means staying curious and making steady, realistic progress over time.',
+      questions: [
+        { id: 'g12-u3-q1', prompt: 'What do effective lifelong learners do?', options: ['Avoid asking for help.', 'Set goals and choose credible resources.', 'Study every hour without breaks.', 'Ignore changes in their field.'], answerIndex: 1, explanationVi: 'Người học hiệu quả đặt mục tiêu cụ thể và chọn nguồn đáng tin cậy.' },
+        { id: 'g12-u3-q2', prompt: 'What does lifelong learning mean in the passage?', options: ['Returning to school every year.', 'Making steady progress and staying curious.', 'Learning only for exams.', 'Collecting certificates without practice.'], answerIndex: 1, explanationVi: 'Bài đọc nhấn mạnh sự tò mò và tiến bộ đều đặn, thực tế theo thời gian.' }
+      ]
+    },
+    speaking: {
+      scenario: 'A discussion about skills for the next five years',
+      prompt: 'Choose one skill you want to improve, explain why it matters and outline a realistic four-week learning plan.',
+      usefulExpressions: ['A skill I want to develop is...', 'This is important because...', 'I will measure progress by...', 'A credible resource would be...', 'If I fall behind, I can...']
+    },
+    writing: {
+      task: 'Write 150–180 words arguing why lifelong learning matters for young adults.',
+      checklist: ['State a clear position.', 'Develop two reasons with examples.', 'Use an inversion structure accurately.', 'Suggest one practical learning habit.', 'Check paragraph cohesion and formal tone.']
+    }
+  }
 ];
 
 export function getSupplementaryLesson(id: string): EnglishLessonContent | undefined {
