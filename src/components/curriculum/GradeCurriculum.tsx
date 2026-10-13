@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { BookOpen, GraduationCap, CheckCircle2, ChevronDown, ChevronUp, Lightbulb, PenLine, MessageCircle, BookMarked } from 'lucide-react';
+import { BookOpen, GraduationCap, CheckCircle2, ChevronDown, ChevronUp, Lightbulb, PenLine, MessageCircle, BookMarked, Search, Trophy, RotateCcw } from 'lucide-react';
 import { supplementaryEnglishLessons } from '../../../data/supplementaryEnglishLessons';
 
 type Grade = 10 | 11 | 12;
@@ -14,8 +14,15 @@ export function GradeCurriculum({ currentGrade }: { currentGrade: Grade }) {
   const [grade, setGrade] = useState<Grade>(currentGrade);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [query, setQuery] = useState('');
+  const [progressFilter, setProgressFilter] = useState<'all' | 'todo' | 'done'>('all');
+  const [completed, setCompleted] = useState<string[]>(() => { try { return JSON.parse(localStorage.getItem('englishwithlinh-completed-lessons') || '[]') as string[]; } catch { return []; } });
   useEffect(() => { setGrade(currentGrade); }, [currentGrade]);
+  useEffect(() => { try { localStorage.setItem('englishwithlinh-completed-lessons', JSON.stringify(completed)); } catch { /* Keep progress in this session. */ } }, [completed]);
   const lessons = useMemo(() => supplementaryEnglishLessons.filter((lesson) => lesson.grade === grade), [grade]);
+  const filteredLessons = useMemo(() => lessons.filter((lesson) => { const searchText = [lesson.title, lesson.titleVi, lesson.theme, lesson.grammar.focus].join(' ').toLocaleLowerCase(); const matchesQuery = searchText.includes(query.trim().toLocaleLowerCase()); const isDone = completed.includes(lesson.id); return matchesQuery && (progressFilter === 'all' || (progressFilter === 'done' ? isDone : !isDone)); }), [lessons, query, progressFilter, completed]);
+  const completedCount = lessons.filter((lesson) => completed.includes(lesson.id)).length;
+  const gradeProgress = lessons.length ? Math.round(completedCount / lessons.length * 100) : 0;
 
   return (
     <section className="curriculum-panel mt-6 rounded-3xl border border-slate-700/60 bg-slate-900/70 p-4 sm:p-6 lg:p-7 shadow-xl">
@@ -46,17 +53,29 @@ export function GradeCurriculum({ currentGrade }: { currentGrade: Grade }) {
           <p className="mt-2 text-sm leading-6 text-slate-200">{gradeMeta[grade].level}. Nội dung luyện tập tự biên soạn theo chủ đề và kỹ năng; không thay thế mục lục sách giáo khoa cụ thể của trường.</p>
         </div>
       </div>
-      <div className="mt-6 flex items-center gap-2"><BookOpen className="h-5 w-5 text-indigo-300" /><h3 className="text-lg font-bold">Bài học và luyện tập</h3><span className="ml-auto rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-400">{lessons.length} bài mẫu</span></div>
+      <div className="mt-6 rounded-2xl border border-slate-700/70 bg-slate-800/50 p-4">
+        <div className="flex items-center justify-between gap-3"><div className="flex items-center gap-2"><Trophy className="h-5 w-5 text-amber-300"/><h3 className="font-bold">Tiến độ lớp {grade}</h3></div><span className="text-sm font-bold text-indigo-300">{completedCount}/{lessons.length} bài · {gradeProgress}%</span></div>
+        <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-slate-700"><div className="h-full rounded-full bg-indigo-500 transition-all" style={{ width: String(gradeProgress) + '%' }} /></div>
+        <p className="mt-2 text-xs text-slate-400">Tiến độ lưu trên thiết bị này, chưa đồng bộ giữa các thiết bị hoặc tài khoản.</p>
+      </div>
+      <div className="mt-6 flex items-center gap-2"><BookOpen className="h-5 w-5 text-indigo-300" /><h3 className="text-lg font-bold">Bài học và luyện tập</h3><span className="ml-auto rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-400">{filteredLessons.length}/{lessons.length} bài</span></div>
+      <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_auto]">
+        <label className="flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3"><Search className="h-4 w-4 text-slate-400"/><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Tìm bài học, chủ đề, ngữ pháp..." className="w-full bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500" aria-label="Tìm bài học"/></label>
+        <div className="flex gap-2" role="group" aria-label="Lọc trạng thái bài học">
+          {([{id:'all', label:'Tất cả'}, {id:'todo', label:'Chưa học'}, {id:'done', label:'Đã hoàn thành'}] as const).map((filter) => <button key={filter.id} onClick={() => setProgressFilter(filter.id)} className={'min-h-11 flex-1 rounded-xl border px-3 text-xs font-bold transition sm:flex-none ' + (progressFilter === filter.id ? 'border-indigo-400 bg-indigo-500 text-white' : 'border-slate-700 bg-slate-800 text-slate-300')}>{filter.label}</button>)}
+        </div>
+      </div>
       <div className="mt-3 space-y-3">
-        {lessons.map((lesson) => {
+        {filteredLessons.map((lesson) => {
           const isOpen = expanded === lesson.id;
           return <article key={lesson.id} className="overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-800/45">
             <button className="flex min-h-16 w-full items-center gap-3 p-4 text-left sm:p-5" onClick={() => setExpanded(isOpen ? null : lesson.id)} aria-expanded={isOpen}>
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300"><BookMarked className="h-5 w-5" /></span>
-              <span className="min-w-0 flex-1"><span className="block text-xs font-bold uppercase tracking-wide text-indigo-300">Unit {lesson.unit} · {lesson.theme}</span><span className="mt-1 block font-bold text-slate-100">{lesson.title}</span><span className="mt-1 block text-sm text-slate-400">{lesson.titleVi}</span></span>
+              <span className={"flex h-10 w-10 shrink-0 items-center justify-center rounded-xl " + (completed.includes(lesson.id) ? "bg-emerald-500/15 text-emerald-300" : "bg-indigo-500/15 text-indigo-300")}>{completed.includes(lesson.id) ? <CheckCircle2 className="h-5 w-5"/> : <BookMarked className="h-5 w-5" />}</span>
+              <span className="min-w-0 flex-1"><span className="block text-xs font-bold uppercase tracking-wide text-indigo-300">Unit {lesson.unit} · {lesson.theme}</span><span className="mt-1 block font-bold text-slate-100">{lesson.title}</span><span className="mt-1 block text-sm text-slate-400">{lesson.titleVi}</span>{completed.includes(lesson.id) && <span className="mt-2 inline-flex rounded-full bg-emerald-500/10 px-2 py-1 text-xs font-bold text-emerald-300">Đã hoàn thành</span>}</span>
               {isOpen ? <ChevronUp className="h-5 w-5 shrink-0 text-slate-400" /> : <ChevronDown className="h-5 w-5 shrink-0 text-slate-400" />}
             </button>
             {isOpen && <div className="space-y-6 border-t border-slate-700/70 p-4 sm:p-5">
+              <div className="flex flex-col gap-3 rounded-xl border border-indigo-400/20 bg-indigo-500/5 p-4 sm:flex-row sm:items-center sm:justify-between"><div><p className="font-bold text-slate-100">Hoàn thành bài học?</p><p className="mt-1 text-sm text-slate-400">Đánh dấu sau khi đã đọc bài và thử làm các hoạt động.</p></div><button onClick={() => setCompleted((old) => old.includes(lesson.id) ? old.filter((id) => id !== lesson.id) : [...old, lesson.id])} className={"inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-bold transition " + (completed.includes(lesson.id) ? "border border-slate-600 bg-slate-800 text-slate-200" : "bg-emerald-600 text-white hover:bg-emerald-500")}>{completed.includes(lesson.id) ? <><RotateCcw className="h-4 w-4"/> Bỏ hoàn thành</> : <><CheckCircle2 className="h-4 w-4"/> Đánh dấu hoàn thành</>}</button></div>
               <div><h4 className="font-bold text-slate-100">Mục tiêu bài học</h4><ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-slate-300">{lesson.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ul></div>
               <div><h4 className="font-bold text-slate-100">Từ vựng trọng tâm</h4><div className="mt-3 grid gap-3 sm:grid-cols-2">{lesson.vocabulary.map((word) => <div key={word.word} className="rounded-xl border border-slate-700 bg-slate-900/50 p-3"><div className="flex flex-wrap items-baseline justify-between gap-2"><span className="font-bold text-indigo-200">{word.word}</span><span className="text-xs text-slate-500">{word.ipa}</span></div><p className="mt-1 text-sm text-slate-300">{word.meaningVi}</p><p className="mt-2 text-sm text-slate-200">{word.example}</p><p className="mt-1 text-xs text-slate-400">{word.exampleVi}</p></div>)}</div></div>
               <div className="rounded-2xl border border-amber-400/20 bg-amber-400/5 p-4"><div className="flex items-center gap-2"><Lightbulb className="h-5 w-5 text-amber-300"/><h4 className="font-bold text-slate-100">Ngữ pháp: {lesson.grammar.focus}</h4></div><p className="mt-2 rounded-lg bg-slate-950/40 p-3 font-mono text-sm text-amber-100">{lesson.grammar.formula}</p><p className="mt-3 text-sm leading-6 text-slate-300">{lesson.grammar.explanationVi}</p><div className="mt-3 space-y-2">{lesson.grammar.examples.map((example) => <div key={example.en} className="text-sm"><p className="font-medium text-slate-100">{example.en}</p><p className="text-slate-400">{example.vi}</p></div>)}</div></div>
@@ -65,6 +84,7 @@ export function GradeCurriculum({ currentGrade }: { currentGrade: Grade }) {
             </div>}
           </article>;
         })}
+        {filteredLessons.length === 0 && <div className="rounded-2xl border border-dashed border-slate-700 p-8 text-center"><BookOpen className="mx-auto h-8 w-8 text-slate-500"/><p className="mt-3 font-semibold text-slate-200">Không tìm thấy bài học phù hợp</p><p className="mt-1 text-sm text-slate-400">Thử từ khóa khác hoặc chuyển bộ lọc sang Tất cả.</p><button onClick={() => { setQuery(""); setProgressFilter("all"); }} className="mt-4 rounded-lg border border-slate-600 px-3 py-2 text-sm font-semibold text-slate-300">Xóa bộ lọc</button></div>}
       </div>
     </section>
   );
