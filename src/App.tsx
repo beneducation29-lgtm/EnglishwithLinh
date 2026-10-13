@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
+import { GradeCurriculum } from './components/curriculum/GradeCurriculum';
 import { Sidebar } from './components/layout/Sidebar';
 import { TopHeader } from './components/layout/TopHeader';
 import { Dashboard } from './components/dashboard/Dashboard';
@@ -31,6 +33,14 @@ import {
 
 export default function App() {
   const [profile, setProfile] = useState<StudentProfile>(StorageService.getProfile());
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    try { return localStorage.getItem('englishwithlinh-theme') === 'light' ? 'light' : 'dark'; } catch { return 'dark'; }
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('englishwithlinh-theme', theme); } catch { /* Theme still works for this session. */ }
+  }, [theme]);
   const [currentTab, setCurrentTab] = useState<string>('dashboard');
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isAITutorOpen, setIsAITutorOpen] = useState(false);
@@ -78,7 +88,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0e14] text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+    <div className="app-shell min-h-screen bg-[#0b0e14] text-slate-100 flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+      <button type="button" onClick={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'} title={theme === 'dark' ? 'Bật giao diện sáng' : 'Bật giao diện tối'} className="theme-toggle fixed right-3 top-20 z-[60] inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-600 bg-slate-800/95 px-3 text-sm font-bold text-slate-100 shadow-xl backdrop-blur transition hover:scale-[1.02] sm:right-5 sm:top-5">
+        {theme === 'dark' ? <Sun className="h-4 w-4 text-amber-300" /> : <Moon className="h-4 w-4 text-indigo-600" />}
+        <span className="hidden sm:inline">{theme === 'dark' ? 'Giao diện sáng' : 'Giao diện tối'}</span>
+      </button>
       {/* Left Sidebar */}
       <Sidebar
         currentTab={currentTab}
@@ -115,6 +129,7 @@ export default function App() {
               onLogTime={handleLogQuickTime}
               onOpenAITutor={() => setIsAITutorOpen(true)}
             />
+            <GradeCurriculum currentGrade={profile.grade} />
           )}
 
           {currentTab === 'listening' && (
