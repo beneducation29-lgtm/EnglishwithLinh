@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { BookOpen, GraduationCap, CheckCircle2, ChevronDown, ChevronUp, Lightbulb, PenLine, MessageCircle, BookMarked } from 'lucide-react';
 import { supplementaryEnglishLessons } from '../../../data/supplementaryEnglishLessons';
 
@@ -14,6 +14,7 @@ export function GradeCurriculum({ currentGrade }: { currentGrade: Grade }) {
   const [grade, setGrade] = useState<Grade>(currentGrade);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, number>>({});
+  useEffect(() => { setGrade(currentGrade); }, [currentGrade]);
   const lessons = useMemo(() => supplementaryEnglishLessons.filter((lesson) => lesson.grade === grade), [grade]);
 
   return (
