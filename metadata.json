@@ -1,0 +1,6 @@
+{
+  "name": "EnglishUp — AI English Learning Lab",
+  "description": "Comprehensive AI English Learning Platform for Vietnamese High School Students (Grades 10-12). Features 4-skills practice, High School Exam Prep, Science & Bioscience English Lab, Vocabulary Spaced Repetition, and AI Tutor.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
