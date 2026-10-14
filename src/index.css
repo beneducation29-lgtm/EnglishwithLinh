@@ -182,3 +182,49 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   html { scroll-behavior: auto; }
 }
 
+/* Dashboard cards: consistent depth, clearer hierarchy, and comfortable touch targets. */
+.app-shell main > * { min-width: 0; }
+.app-shell main section,
+.app-shell main article { min-width: 0; }
+.app-shell main button:not(.theme-toggle) {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-duration: 160ms;
+}
+.app-shell main button:active { transform: translateY(1px); }
+.app-shell main [class*="rounded-3xl"][class*="border"] {
+  border-radius: var(--card-radius);
+}
+.app-shell main [class*="grid"] > * { min-width: 0; }
+.app-shell main p { overflow-wrap: anywhere; }
+:root[data-theme="light"] .app-shell main [class*="bg-[#161a23]"],
+:root[data-theme="light"] .app-shell main [class*="bg-[#1C202B]"] {
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 8px 24px rgba(36, 55, 90, .055);
+}
+:root[data-theme="light"] .app-shell main [class*="bg-[#1C202B]"] [class*="text-slate-200"] {
+  color: #1e293b !important;
+}
+:root[data-theme="light"] .app-shell main [class*="bg-slate-900/80"],
+:root[data-theme="light"] .app-shell main [class*="bg-slate-900/90"] {
+  background-color: #eef3fa !important;
+}
+:root[data-theme="light"] .app-shell main [class*="border-slate-700"],
+:root[data-theme="light"] .app-shell main [class*="border-slate-800"] {
+  border-color: #dce5f0 !important;
+}
+:root[data-theme="light"] .app-shell main [class*="text-slate-300"],
+:root[data-theme="light"] .app-shell main [class*="text-slate-400"] {
+  color: #53627a !important;
+}
+:root[data-theme="light"] .app-shell main [class*="bg-gradient-to-r"][class*="from-[#141b2d]"] {
+  color: #fff !important;
+}
+:root[data-theme="light"] .app-shell main [class*="from-[#141b2d]"] [class*="text-slate-300"],
+:root[data-theme="light"] .app-shell main [class*="from-[#141b2d]"] [class*="text-slate-400"] {
+  color: #d8e4f7 !important;
+}
+@media (max-width: 640px) {
+  .app-shell main [class*="rounded-3xl"] { border-radius: 1.1rem; }
+  .app-shell main [class*="min-h-[300px]"] { min-height: 250px; }
+  .app-shell main button { min-height: 2.5rem; }
+}
