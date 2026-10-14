@@ -89,3 +89,96 @@ body { background-color: var(--page-bg); color: var(--text-main); transition: ba
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* English with Linh visual system: bright, youthful and progress-focused. */
+:root {
+  --brand-blue: #3977f6;
+  --brand-violet: #8b5cf6;
+  --brand-lime: #a3e635;
+  --card-radius: 1.25rem;
+}
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+button, [role="button"] { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+::selection { background: #bfdbfe; color: #172033; }
+@media (min-width: 1024px) {
+  .app-shell main { min-width: 0; }
+}
+@media (max-width: 640px) {
+  .app-shell main { padding-left: .875rem; padding-right: .875rem; }
+  .theme-toggle { top: auto !important; right: .75rem !important; bottom: 5.25rem !important; }
+  .app-shell button { touch-action: manipulation; }
+}
+:root[data-theme="light"] body,
+:root[data-theme="light"] .app-shell {
+  background: #f4f7fc !important;
+  color: #18243a !important;
+}
+:root[data-theme="light"] header.sticky {
+  background: rgba(255,255,255,.92) !important;
+  border-color: #e1e8f2 !important;
+  box-shadow: 0 4px 20px rgba(29, 50, 86, .04);
+}
+:root[data-theme="light"] aside {
+  background: #fff !important;
+  border-color: #e1e8f2 !important;
+  box-shadow: 8px 0 30px rgba(29,50,86,.04);
+}
+:root[data-theme="light"] aside [class*="border-slate-800"],
+:root[data-theme="light"] header [class*="border-slate-800"] {
+  border-color: #e3e9f2 !important;
+}
+:root[data-theme="light"] aside [class*="bg-[#161a24]"],
+:root[data-theme="light"] aside [class*="bg-[#161a23]"],
+:root[data-theme="light"] header [class*="bg-[#161a23]"],
+:root[data-theme="light"] header [class*="bg-[#121620]"] {
+  background-color: #f3f6fb !important;
+}
+:root[data-theme="light"] aside [class*="text-white"],
+:root[data-theme="light"] header [class*="text-white"] {
+  color: #18243a !important;
+}
+:root[data-theme="light"] aside [class*="bg-[#3B82F6]"],
+:root[data-theme="light"] header [class*="bg-[#A3E635]"] {
+  color: #fff !important;
+}
+:root[data-theme="light"] aside [class*="bg-[#3B82F6]"] *,
+:root[data-theme="light"] header [class*="bg-[#A3E635]"] * {
+  color: inherit;
+}
+:root[data-theme="light"] nav.fixed.bottom-0 {
+  background: rgba(255,255,255,.96) !important;
+  border-color: #e1e8f2 !important;
+  box-shadow: 0 -8px 28px rgba(29,50,86,.08);
+}
+:root[data-theme="light"] nav.fixed.bottom-0 [class*="text-slate-400"] {
+  color: #64748b !important;
+}
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select {
+  color: #18243a;
+}
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder {
+  color: #718096;
+}
+:root[data-theme="light"] [class*="bg-[#161a23]"],
+:root[data-theme="light"] [class*="bg-[#1C202B]"],
+:root[data-theme="light"] [class*="bg-[#1a202d]"] {
+  background-color: #fff !important;
+}
+:root[data-theme="light"] [class*="text-slate-950"] {
+  color: #172033;
+}
+:root[data-theme="light"] .app-shell main [class*="shadow-xl"] {
+  box-shadow: 0 10px 28px rgba(29,50,86,.07);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
