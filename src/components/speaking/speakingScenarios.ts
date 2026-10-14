@@ -282,4 +282,86 @@ export const speakingScenarios: SpeakingScenario[] = [
     followUp: 'Ask what the student would do if they fell behind their plan.'
   }
 
+  ,
+  {
+    id: 'g10-study-habits', grade: 10, title: 'Building better study habits', theme: 'Study skills & school life', level: 'A2',
+    role: 'AI đóng vai bạn cùng lớp muốn học hiệu quả hơn', objective: 'Nói về thời gian biểu, thói quen học và đưa lời khuyên đơn giản.',
+    prompt: 'I get distracted by my phone when I study. What practical changes could help me concentrate?',
+    vocabulary: [{word:'stay focused',meaningVi:'giữ tập trung'},{word:'make a timetable',meaningVi:'lập thời gian biểu'},{word:'take a short break',meaningVi:'nghỉ giải lao ngắn'}],
+    phrases: ['You could try…','I find it helpful to…','First,… Then,…','It works for me because…'],
+    followUp: 'Ask the student to suggest a realistic 30-minute study routine.'
+  },
+  {
+    id: 'g10-city-country', grade: 10, title: 'Comparing city and country life', theme: 'Places & community', level: 'A2',
+    role: 'AI đóng vai bạn đang cân nhắc nơi sinh sống', objective: 'So sánh nơi chốn, dùng tính từ so sánh và nêu lý do.',
+    prompt: 'Would you rather live in a busy city or a quiet rural area? Tell me about the advantages and disadvantages.',
+    vocabulary: [{word:'public transport',meaningVi:'giao thông công cộng'},{word:'peaceful surroundings',meaningVi:'khung cảnh yên bình'},{word:'job opportunities',meaningVi:'cơ hội việc làm'}],
+    phrases: ['Compared with…, … is…','One advantage is…','On the other hand,…','I would prefer… because…'],
+    followUp: 'Ask which improvement would make the student’s local area better.'
+  },
+  {
+    id: 'g10-future-jobs', grade: 10, title: 'Talking about future jobs', theme: 'People & future careers', level: 'A2',
+    role: 'AI đóng vai cố vấn hướng nghiệp thân thiện', objective: 'Mô tả sở thích, năng lực và nghề nghiệp mong muốn.',
+    prompt: 'What kind of job might suit you in the future? Think about your interests, strengths and the skills you need.',
+    vocabulary: [{word:'strength',meaningVi:'điểm mạnh'},{word:'career choice',meaningVi:'lựa chọn nghề nghiệp'},{word:'develop a skill',meaningVi:'phát triển kỹ năng'}],
+    phrases: ['I am good at…','I would like to become…','To prepare for this job, I need to…','I am interested in… because…'],
+    followUp: 'Ask what small step the student can take this year to explore that career.'
+  },
+  {
+    id: 'g11-healthy-community', grade: 11, title: 'Promoting healthy habits among teenagers', theme: 'Health & wellbeing', level: 'B1',
+    role: 'AI đóng vai thành viên ban truyền thông học đường', objective: 'Đề xuất chiến dịch sức khỏe, giải thích đối tượng và tác động.',
+    prompt: 'Our school wants to help teenagers sleep better and manage stress. What campaign would you recommend?',
+    vocabulary: [{word:'mental wellbeing',meaningVi:'sức khỏe tinh thần'},{word:'manage stress',meaningVi:'kiểm soát căng thẳng'},{word:'raise awareness',meaningVi:'nâng cao nhận thức'}],
+    phrases: ['The campaign could focus on…','This matters because…','We could reach students by…','We would measure its impact by…'],
+    followUp: 'Ask how the campaign could include students who feel shy about asking for help.'
+  },
+  {
+    id: 'g11-urbanisation', grade: 11, title: 'Managing the challenges of urbanisation', theme: 'Cities & social issues', level: 'B1',
+    role: 'AI đóng vai thành viên hội đồng thanh niên', objective: 'Giải thích vấn đề đô thị và cân nhắc giải pháp khả thi.',
+    prompt: 'Your town is growing quickly and traffic is getting worse. Which solution should local leaders prioritise?',
+    vocabulary: [{word:'urbanisation',meaningVi:'đô thị hóa'},{word:'traffic congestion',meaningVi:'ùn tắc giao thông'},{word:'affordable housing',meaningVi:'nhà ở có giá phù hợp'}],
+    phrases: ['A major challenge is…','The most practical measure would be…','Although it may cost…,','In the long run,…'],
+    followUp: 'Ask the student to compare better public transport with building more roads.'
+  },
+  {
+    id: 'g11-intergenerational', grade: 11, title: 'Bridging the generation gap', theme: 'Family & relationships', level: 'B1',
+    role: 'AI đóng vai phụ huynh có quan điểm khác biệt', objective: 'Diễn đạt bất đồng lịch sự, giải thích nhu cầu và tìm điểm chung.',
+    prompt: 'My parents and I disagree about how much time I should spend online. How could we discuss this fairly?',
+    vocabulary: [{word:'generation gap',meaningVi:'khoảng cách thế hệ'},{word:'mutual respect',meaningVi:'sự tôn trọng lẫn nhau'},{word:'set boundaries',meaningVi:'đặt ra giới hạn'}],
+    phrases: ['I understand your concern about…','From my perspective,…','Could we agree to…?','A fair compromise might be…'],
+    followUp: 'Ask the student to explain how both sides could check whether their agreement works.'
+  },
+  {
+    id: 'g11-work-skills', grade: 11, title: 'Preparing for the changing world of work', theme: 'Work & future skills', level: 'B1',
+    role: 'AI đóng vai diễn giả hướng nghiệp', objective: 'Nêu kỹ năng cần thiết và đưa ví dụ về cách rèn luyện.',
+    prompt: 'Employers increasingly value communication, teamwork and adaptability. Which skill should students develop first, and how?',
+    vocabulary: [{word:'adaptability',meaningVi:'khả năng thích nghi'},{word:'collaboration',meaningVi:'sự hợp tác'},{word:'problem-solving',meaningVi:'giải quyết vấn đề'}],
+    phrases: ['I would prioritise… because…','Students can practise this by…','For instance,…','This skill is useful when…'],
+    followUp: 'Ask how a school project could help students demonstrate the skill.'
+  },
+  {
+    id: 'g12-economic-choice', grade: 12, title: 'Making responsible consumer choices', theme: 'Consumer behaviour & sustainability', level: 'B2',
+    role: 'AI đóng vai người điều phối tranh luận', objective: 'Đánh giá lựa chọn tiêu dùng bằng bằng chứng và cân nhắc đánh đổi.',
+    prompt: 'Should consumers pay more for products that are ethically produced and environmentally friendly? Defend your position.',
+    vocabulary: [{word:'ethical consumption',meaningVi:'tiêu dùng có đạo đức'},{word:'supply chain',meaningVi:'chuỗi cung ứng'},{word:'value for money',meaningVi:'giá trị tương xứng với số tiền'}],
+    phrases: ['The decision depends partly on…','A counterargument is that…','We should distinguish between…','A balanced approach would be…'],
+    followUp: 'Ask the student to respond to the argument that sustainable products are too expensive.'
+  },
+  {
+    id: 'g12-science-society', grade: 12, title: 'Explaining how science affects everyday life', theme: 'Science & innovation', level: 'B2',
+    role: 'AI đóng vai người dẫn chương trình khoa học', objective: 'Giải thích một ứng dụng khoa học, lợi ích, giới hạn và ví dụ.',
+    prompt: 'Choose a scientific innovation that affects daily life. How has it helped people, and what risks should society consider?',
+    vocabulary: [{word:'scientific innovation',meaningVi:'đổi mới khoa học'},{word:'unintended consequence',meaningVi:'hệ quả ngoài dự kiến'},{word:'evidence-based',meaningVi:'dựa trên bằng chứng'}],
+    phrases: ['A clear example is…','The evidence suggests that…','Despite these benefits,…','Society should ensure that…'],
+    followUp: 'Ask the student to explain how the public can distinguish scientific evidence from exaggerated claims.'
+  },
+  {
+    id: 'g12-work-life', grade: 12, title: 'Discussing work-life balance', theme: 'Future plans & wellbeing', level: 'B1+',
+    role: 'AI đóng vai cố vấn nghề nghiệp', objective: 'Nêu quan điểm, ưu tiên và cách xử lý áp lực công việc.',
+    prompt: 'Some people believe career success requires working long hours. What does a healthy and sustainable career look like to you?',
+    vocabulary: [{word:'work-life balance',meaningVi:'cân bằng công việc và cuộc sống'},{word:'burnout',meaningVi:'kiệt sức do căng thẳng kéo dài'},{word:'set priorities',meaningVi:'xác định ưu tiên'}],
+    phrases: ['Success should not be measured only by…','One way to maintain balance is…','It is important to set…','In the long term, this helps…'],
+    followUp: 'Ask how young adults can set boundaries while continuing to develop professionally.'
+  }
+
 ];
