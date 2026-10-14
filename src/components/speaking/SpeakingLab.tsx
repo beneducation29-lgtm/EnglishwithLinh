@@ -226,12 +226,16 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
         })
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(typeof data.error === 'string' ? data.error : `Conversation API returned ${res.status}`);
+      }
+      const reply = typeof data.reply === 'string' ? data.reply.trim() : '';
       const aiMsg: ConversationMessage = {
         id: 'ai-' + Date.now(),
         sender: 'ai',
-        text: data.reply || 'Great thought! Could you explain that further with a specific example?',
-        feedbackVi: data.feedbackOnSpeech
+        text: reply || 'Great thought! Could you explain that further with a specific example?',
+        feedbackVi: typeof data.feedbackOnSpeech === 'string' ? data.feedbackOnSpeech : undefined
       };
 
       setChatMessages(prev => [...prev, aiMsg]);
@@ -243,7 +247,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
       const fallbackAi: ConversationMessage = {
         id: 'ai-' + Date.now(),
         sender: 'ai',
-        text: 'That is a compelling point. How can high school students implement that in daily life?',
+        text: 'I could not reach the conversation service just now. Please try sending your answer again in a moment.\n\nWhile you wait, expand your idea with one reason and one example.',
       };
       setChatMessages(prev => [...prev, fallbackAi]);
     } finally {
