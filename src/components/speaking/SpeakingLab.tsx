@@ -94,6 +94,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
   ]);
   const [userInputText, setUserInputText] = useState('');
   const [isAiResponding, setIsAiResponding] = useState(false);
+  const [isConversationRecording, setIsConversationRecording] = useState(false);
   const chatScrollRef = useRef<HTMLDivElement>(null);
 
   // Recognition instance ref
@@ -248,6 +249,37 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
     } finally {
       setIsAiResponding(false);
     }
+  };
+
+  const handleStartConversationMic = () => {
+    if (!SpeechService.isRecognitionAvailable()) {
+      alert('Trình duyệt chưa hỗ trợ nhận diện giọng nói. Bạn có thể nhập câu trả lời bằng tiếng Anh.');
+      return;
+    }
+    try {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      recognition.onstart = () => setIsConversationRecording(true);
+      recognition.onresult = (event: any) => {
+        const transcript = String(event.results?.[0]?.[0]?.transcript || '').trim();
+        if (transcript) void handleSendMessage(transcript);
+      };
+      recognition.onerror = () => setIsConversationRecording(false);
+      recognition.onend = () => setIsConversationRecording(false);
+      recognitionRef.current = recognition;
+      recognition.start();
+    } catch (error) {
+      console.error('Could not start speaking-room recognition:', error);
+      setIsConversationRecording(false);
+    }
+  };
+
+  const handleStopConversationMic = () => {
+    try { recognitionRef.current?.stop(); } catch { /* Recognition may already have stopped. */ }
+    setIsConversationRecording(false);
   };
 
   return (
@@ -547,9 +579,19 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
                 value={userInputText}
                 onChange={(e) => setUserInputText(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Nhập câu trả lời bằng tiếng Anh hoặc bấm Mic để nói..."
+                placeholder="Nhập câu trả lời bằng tiếng Anh hoặc bấm nút mic để nói..."
                 className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-purple-500"
               />
+              <button
+                type="button"
+                onClick={isConversationRecording ? handleStopConversationMic : handleStartConversationMic}
+                disabled={isAiResponding}
+                aria-label={isConversationRecording ? 'Dừng ghi âm câu trả lời' : 'Trả lời bằng giọng nói'}
+                title={isConversationRecording ? 'Dừng ghi âm' : 'Trả lời bằng giọng nói tiếng Anh'}
+                className={`min-h-11 min-w-11 rounded-xl border px-3 text-sm font-bold transition ${isConversationRecording ? 'border-rose-300 bg-rose-50 text-rose-700' : 'border-slate-200 bg-white text-purple-700 hover:bg-purple-50'}`}
+              >
+                {isConversationRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+              </button>
               <button
                 onClick={() => handleSendMessage()}
                 disabled={!userInputText.trim() || isAiResponding}
