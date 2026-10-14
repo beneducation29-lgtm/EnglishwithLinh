@@ -523,6 +523,44 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
             </div>
           </div>
 
+          {/* Personalised speaking scaffold: vocabulary, phrases and progress */}
+          <section className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-violet-100 bg-violet-50/70 p-4">
+              <div className="flex items-center justify-between gap-2">
+                <h4 className="text-xs font-extrabold uppercase tracking-wide text-violet-900">Từ vựng mục tiêu</h4>
+                <span className="text-[11px] font-semibold text-violet-700">{selectedTopic.vocabulary.length} từ/cụm từ</span>
+              </div>
+              <div className="mt-3 space-y-2">
+                {selectedTopic.vocabulary.map((item) => (
+                  <div key={item.word} className="flex flex-col gap-0.5 sm:flex-row sm:items-start sm:justify-between">
+                    <span className="text-sm font-bold text-slate-900">{item.word}</span>
+                    <span className="text-xs leading-5 text-slate-600 sm:text-right">{item.meaningVi}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-sky-100 bg-sky-50/70 p-4">
+              <h4 className="text-xs font-extrabold uppercase tracking-wide text-sky-900">Mẫu câu để bắt đầu</h4>
+              <p className="mt-1 text-xs leading-5 text-slate-600">Chạm vào mẫu câu để đưa vào ô trả lời, sau đó cá nhân hóa bằng ý kiến của bạn.</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {selectedTopic.phrases.map((phrase) => (
+                  <button
+                    key={phrase}
+                    type="button"
+                    onClick={() => setUserInputText((current) => current.trim() ? current.trim() + ' ' + phrase : phrase)}
+                    className="min-h-10 rounded-xl border border-sky-200 bg-white px-3 py-2 text-left text-xs font-semibold leading-5 text-sky-900 transition hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  >
+                    {phrase}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
+            <p className="text-xs text-slate-600">Mục tiêu: trả lời bằng 3–5 câu, có lý do và ví dụ.</p>
+            <p className="text-xs font-bold text-purple-700">Bạn đã gửi {chatMessages.filter((message) => message.sender === 'user').length} lượt</p>
+          </div>
+
           {/* Chat Messages Log */}
           <div 
             ref={chatScrollRef}
@@ -602,20 +640,16 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
               </button>
             </div>
 
-            {/* Quick response suggestions */}
+            {/* Quick response suggestions tailored to this scenario */}
             <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
-              <span className="font-semibold">Câu mẫu gợi ý:</span>
-              {[
-                "In my opinion, we should reduce single-use plastic.",
-                "I believe AI provides personalized learning support.",
-                "Practicing listening every day improves my confidence."
-              ].map((pill, i) => (
+              <span className="font-semibold">Gợi ý phản xạ:</span>
+              {[selectedTopic.phrases[0], selectedTopic.phrases[1], selectedTopic.followUp].filter(Boolean).map((pill, i) => (
                 <button
                   key={i}
-                  onClick={() => handleSendMessage(pill)}
-                  className="px-2.5 py-1 bg-slate-100 hover:bg-purple-50 hover:text-purple-700 rounded-lg text-[11px] transition-colors"
+                  onClick={() => setUserInputText((current) => current.trim() ? current.trim() + ' ' + pill : pill)}
+                  className="min-h-9 rounded-lg bg-slate-100 px-2.5 py-1.5 text-left text-[11px] leading-5 transition-colors hover:bg-purple-50 hover:text-purple-700"
                 >
-                  "{pill.slice(0, 32)}..."
+                  {pill}
                 </button>
               ))}
             </div>
