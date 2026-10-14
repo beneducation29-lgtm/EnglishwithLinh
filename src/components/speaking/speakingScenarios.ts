@@ -192,8 +192,7 @@ export const speakingScenarios: SpeakingScenario[] = [
     vocabulary: [{word:'feasible',meaningVi:'khả thi'},{word:'resource-efficient',meaningVi:'sử dụng tài nguyên hiệu quả'},{word:'measurable outcome',meaningVi:'kết quả đo lường được'}],
     phrases: ['I understand that concern; however,…','The initial cost could be offset by…','We could start with a pilot project.','We would measure the results by…'],
     followUp: 'Ask the student to offer a lower-cost first step and defend it.'
-  }
-
+  },
   {
     id: 'g10-inventions', grade: 10, title: 'Explaining a useful invention', theme: 'Inventions & everyday life', level: 'A2',
     role: 'AI đóng vai bạn cùng lớp tò mò về công nghệ', objective: 'Mô tả công dụng, lợi ích và hạn chế của một phát minh quen thuộc.',
