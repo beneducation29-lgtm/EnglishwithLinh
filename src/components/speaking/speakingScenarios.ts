@@ -193,4 +193,94 @@ export const speakingScenarios: SpeakingScenario[] = [
     phrases: ['I understand that concern; however,…','The initial cost could be offset by…','We could start with a pilot project.','We would measure the results by…'],
     followUp: 'Ask the student to offer a lower-cost first step and defend it.'
   }
+
+  {
+    id: 'g10-inventions', grade: 10, title: 'Explaining a useful invention', theme: 'Inventions & everyday life', level: 'A2',
+    role: 'AI đóng vai bạn cùng lớp tò mò về công nghệ', objective: 'Mô tả công dụng, lợi ích và hạn chế của một phát minh quen thuộc.',
+    prompt: 'Which invention makes your daily life easier? Tell me how you use it and why it is useful.',
+    vocabulary: [{word:'device',meaningVi:'thiết bị'},{word:'convenient',meaningVi:'tiện lợi'},{word:'solve a problem',meaningVi:'giải quyết vấn đề'}],
+    phrases: ['It was invented to…','I use it whenever…','One advantage is…','It makes it easier to…'],
+    followUp: 'Ask whether people can become too dependent on this invention.'
+  },
+  {
+    id: 'g10-equality', grade: 10, title: 'Promoting equal opportunities', theme: 'Gender equality & society', level: 'A2',
+    role: 'AI đóng vai thành viên hội đồng học sinh', objective: 'Nêu ví dụ về cơ hội công bằng trong học tập và hoạt động ngoại khóa.',
+    prompt: 'How can our school make sure that all students have equal opportunities to join activities and develop their talents?',
+    vocabulary: [{word:'equal opportunity',meaningVi:'cơ hội bình đẳng'},{word:'take part in',meaningVi:'tham gia'},{word:'challenge a stereotype',meaningVi:'thách thức định kiến'}],
+    phrases: ['Everyone should have the chance to…','A fair way to do this is…','We should not judge people by…','For instance,…'],
+    followUp: 'Ask the student to suggest one change the school could make this term.'
+  },
+  {
+    id: 'g10-global-orgs', grade: 10, title: 'Introducing an international organisation', theme: 'Viet Nam & international organisations', level: 'A2',
+    role: 'AI đóng vai bạn chuẩn bị bài thuyết trình nhóm', objective: 'Giới thiệu mục tiêu và hoạt động của một tổ chức quốc tế bằng ngôn ngữ đơn giản.',
+    prompt: 'Our group is preparing a short presentation about an international organisation. Which one should we choose, and what does it do?',
+    vocabulary: [{word:'member country',meaningVi:'quốc gia thành viên'},{word:'humanitarian',meaningVi:'nhân đạo'},{word:'support a cause',meaningVi:'ủng hộ một mục tiêu'}],
+    phrases: ['Its main purpose is to…','It works with…','One example of its work is…','I suggest choosing… because…'],
+    followUp: 'Ask how young people can learn more about its work.'
+  },
+  {
+    id: 'g11-generation-gap', grade: 11, title: 'Finding common ground across generations', theme: 'The generation gap & family', level: 'B1',
+    role: 'AI đóng vai phụ huynh có quan điểm khác', objective: 'Giải thích quan điểm, thể hiện tôn trọng và tìm thỏa hiệp.',
+    prompt: 'I think teenagers spend too much time online. How can you explain your point of view while respecting my concerns?',
+    vocabulary: [{word:'generation gap',meaningVi:'khoảng cách thế hệ'},{word:'mutual respect',meaningVi:'sự tôn trọng lẫn nhau'},{word:'reach a compromise',meaningVi:'đi đến thỏa hiệp'}],
+    phrases: ['I understand why you feel that way.','From my perspective,…','Could we agree to…?','Both generations can learn to…'],
+    followUp: 'Ask the student to propose a fair rule about screen time.'
+  },
+  {
+    id: 'g11-future-city', grade: 11, title: 'Designing a city of the future', theme: 'Cities & sustainable living', level: 'B1',
+    role: 'AI đóng vai kiến trúc sư đô thị', objective: 'Đề xuất giải pháp giao thông, không gian xanh và dịch vụ công.',
+    prompt: 'We are planning a more liveable city for the future. Which two features should be our top priorities?',
+    vocabulary: [{word:'public transport network',meaningVi:'mạng lưới giao thông công cộng'},{word:'green space',meaningVi:'không gian xanh'},{word:'liveable',meaningVi:'đáng sống'}],
+    phrases: ['The city should invest in…','This would reduce…','Another priority is…','Compared with cars, public transport…'],
+    followUp: 'Ask how the city could make the proposal affordable for residents.'
+  },
+  {
+    id: 'g11-independent', grade: 11, title: 'Making an independent decision', theme: 'Becoming independent & life skills', level: 'B1',
+    role: 'AI đóng vai người hướng dẫn kỹ năng sống', objective: 'Nói về quản lý thời gian, tiền bạc và chịu trách nhiệm với lựa chọn.',
+    prompt: 'You want to become more independent before leaving school. Which life skill would you start practising first?',
+    vocabulary: [{word:'budget',meaningVi:'ngân sách / lập ngân sách'},{word:'make a decision',meaningVi:'đưa ra quyết định'},{word:'take responsibility',meaningVi:'chịu trách nhiệm'}],
+    phrases: ['I would start by learning to…','This is important because…','If I make a mistake, I can…','A realistic first step is…'],
+    followUp: 'Ask the student to describe a time they solved a problem independently.'
+  },
+  {
+    id: 'g11-school-leaver', grade: 11, title: 'Comparing options after high school', theme: 'Education & future pathways', level: 'B1',
+    role: 'AI đóng vai cố vấn hướng nghiệp', objective: 'So sánh đại học, đào tạo nghề và các lộ trình học tập khác.',
+    prompt: 'Students can choose different paths after high school. What factors should someone consider before making this decision?',
+    vocabulary: [{word:'vocational training',meaningVi:'đào tạo nghề'},{word:'qualification',meaningVi:'bằng cấp / trình độ chuyên môn'},{word:'career goal',meaningVi:'mục tiêu nghề nghiệp'}],
+    phrases: ['One option is to…','The main difference is…','Students should take into account…','The best choice depends on…'],
+    followUp: 'Ask how students can get reliable information about each pathway.'
+  },
+  {
+    id: 'g12-media', grade: 12, title: 'Evaluating the influence of mass media', theme: 'Mass media & communication', level: 'B2',
+    role: 'AI đóng vai người điều phối tranh luận', objective: 'Phân tích ảnh hưởng của truyền thông và phân biệt thông tin với ý kiến.',
+    prompt: 'Mass media can inform the public, but it can also spread misinformation. How should young people respond to this challenge?',
+    vocabulary: [{word:'media literacy',meaningVi:'năng lực hiểu biết truyền thông'},{word:'bias',meaningVi:'thiên kiến'},{word:'public opinion',meaningVi:'dư luận'}],
+    phrases: ['The media plays a role in…','We need to distinguish between…','A possible risk is…','To evaluate a report, readers should…'],
+    followUp: 'Ask the student to explain why checking the original source matters.'
+  },
+  {
+    id: 'g12-cultural-identity', grade: 12, title: 'Preserving cultural identity in a global world', theme: 'Cultural identity & globalisation', level: 'B2',
+    role: 'AI đóng vai học sinh trao đổi quốc tế', objective: 'Giải thích giá trị văn hóa và cân bằng truyền thống với thay đổi.',
+    prompt: 'Do you think globalisation makes it harder for young people to preserve their cultural identity? Why or why not?',
+    vocabulary: [{word:'cultural identity',meaningVi:'bản sắc văn hóa'},{word:'pass down traditions',meaningVi:'truyền lại truyền thống'},{word:'cultural exchange',meaningVi:'giao lưu văn hóa'}],
+    phrases: ['To some extent, I agree that…','At the same time,…','A tradition worth preserving is…','Cultural exchange does not necessarily mean…'],
+    followUp: 'Ask the student to suggest a way schools can keep local traditions meaningful.'
+  },
+  {
+    id: 'g12-biodiversity', grade: 12, title: 'Protecting endangered species', theme: 'Ecosystems & biodiversity', level: 'B2',
+    role: 'AI đóng vai đại diện dự án bảo tồn', objective: 'Nêu nguyên nhân, hệ quả và giải pháp bảo tồn bằng lập luận rõ ràng.',
+    prompt: 'Your community is discussing a project to protect an endangered species. What action would have the greatest impact?',
+    vocabulary: [{word:'endangered species',meaningVi:'loài có nguy cơ tuyệt chủng'},{word:'habitat loss',meaningVi:'mất môi trường sống'},{word:'conservation effort',meaningVi:'nỗ lực bảo tồn'}],
+    phrases: ['One major cause is…','This could lead to…','A practical conservation measure is…','The project should be evaluated by…'],
+    followUp: 'Ask the student to explain how local residents could take part.'
+  },
+  {
+    id: 'g12-lifelong-learning', grade: 12, title: 'Making a lifelong learning plan', theme: 'Lifelong learning & future skills', level: 'B1+',
+    role: 'AI đóng vai cố vấn học tập', objective: 'Đặt mục tiêu học tập thực tế và giải thích cách duy trì động lực.',
+    prompt: 'Work and technology keep changing. What skill would you like to learn over the next year, and how will you make steady progress?',
+    vocabulary: [{word:'lifelong learning',meaningVi:'học tập suốt đời'},{word:'set a realistic goal',meaningVi:'đặt mục tiêu thực tế'},{word:'adapt to change',meaningVi:'thích nghi với thay đổi'}],
+    phrases: ['My long-term goal is to…','I will break it down into…','To stay motivated, I can…','I will review my progress by…'],
+    followUp: 'Ask what the student would do if they fell behind their plan.'
+  }
+
 ];
