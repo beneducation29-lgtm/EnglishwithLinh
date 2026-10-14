@@ -286,6 +286,16 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
     setIsConversationRecording(false);
   };
 
+  // Session reflection uses only the learner's actual messages; it does not invent scores.
+  const learnerMessages = chatMessages.filter((message) => message.sender === 'user');
+  const learnerWordCount = learnerMessages.reduce((total, message) => {
+    const words = message.text.trim().match(/\\b[\\w'-]+\\b/g);
+    return total + (words?.length || 0);
+  }, 0);
+  const usedTargetPhrases = selectedTopic.phrases.filter((phrase) =>
+    learnerMessages.some((message) => message.text.toLowerCase().includes(phrase.toLowerCase()))
+  );
+
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
@@ -612,6 +622,41 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
               </div>
             )}
           </div>
+
+          {learnerMessages.length > 0 && (
+            <section aria-label="Tổng kết luyện nói" className="mt-4 rounded-2xl border border-violet-200 bg-violet-50 p-4 sm:p-5">
+              <div className="flex items-start gap-3">
+                <div className="rounded-xl bg-white p-2 text-violet-700 shadow-sm"><CheckCircle2 className="h-5 w-5" /></div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-sm font-extrabold text-violet-950">Tổng kết lượt luyện tập</h4>
+                  <p className="mt-1 text-xs leading-5 text-violet-800">Dựa trên nội dung bạn đã gửi trong cuộc trò chuyện này.</p>
+                </div>
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                <div className="rounded-xl bg-white p-3">
+                  <p className="text-[11px] font-semibold text-slate-500">Lượt trả lời</p>
+                  <p className="mt-1 text-xl font-black text-slate-900">{learnerMessages.length}</p>
+                </div>
+                <div className="rounded-xl bg-white p-3">
+                  <p className="text-[11px] font-semibold text-slate-500">Số từ đã viết/nói</p>
+                  <p className="mt-1 text-xl font-black text-slate-900">{learnerWordCount}</p>
+                </div>
+                <div className="col-span-2 rounded-xl bg-white p-3 sm:col-span-1">
+                  <p className="text-[11px] font-semibold text-slate-500">Cụm từ mục tiêu đã dùng</p>
+                  <p className="mt-1 text-xl font-black text-slate-900">{usedTargetPhrases.length}/{selectedTopic.phrases.length}</p>
+                </div>
+              </div>
+              <div className="mt-3 rounded-xl border border-violet-100 bg-white p-3">
+                <p className="text-xs font-extrabold text-slate-800">Gợi ý bước tiếp theo</p>
+                {usedTargetPhrases.length < Math.min(2, selectedTopic.phrases.length) ? (
+                  <p className="mt-1 text-xs leading-5 text-slate-600">Thử đưa thêm một hoặc hai cụm từ gợi ý vào câu trả lời tiếp theo: {selectedTopic.phrases.filter((phrase) => !usedTargetPhrases.includes(phrase)).slice(0, 2).join(' · ') || 'hãy tiếp tục mở rộng ý kiến'}.</p>
+                ) : (
+                  <p className="mt-1 text-xs leading-5 text-slate-600">Bạn đã dùng được các cụm từ mục tiêu. Hãy phát triển câu trả lời theo cấu trúc: ý chính → lý do → ví dụ cụ thể.</p>
+                )}
+              </div>
+              <p className="mt-3 text-[11px] leading-5 text-violet-800">Lưu ý: số từ được đếm từ bản ghi văn bản, không phải phép đo độ trôi chảy hay điểm phát âm.</p>
+            </section>
+          )}
 
           {/* Input Box */}
           <div className="space-y-2">
