@@ -18,6 +18,7 @@ import {
 import { SpeechService, PronunciationDiffResult } from '../../services/speechService';
 import { Grade } from '../../types';
 import { StorageService } from '../../services/storage';
+import { speakingScenarios } from './speakingScenarios';
 
 interface SpeakingLabProps {
   currentGrade: Grade;
@@ -66,12 +67,7 @@ const PRONUNCIATION_SENTENCES = [
   }
 ];
 
-const CONVERSATION_TOPICS = [
-  { id: 'env', title: 'Bảo vệ Môi trường & Hệ sinh thái', prompt: 'Tell me about one environmental initiative at your high school.' },
-  { id: 'tech', title: 'Ứng dụng Trí tuệ Nhân tạo & Khoa học', prompt: 'How do you think AI tools will change high school education in the next few years?' },
-  { id: 'exam', title: 'Chiến thuật Ôn thi Tốt nghiệp THPT', prompt: 'Which English skill do you find most challenging when preparing for the graduation exam?' },
-  { id: 'school', title: 'Hoạt động Câu lạc bộ Học đường', prompt: 'If you could establish a new academic club at your school, what would it be?' }
-];
+const CONVERSATION_TOPICS = speakingScenarios;
 
 export const SpeakingLab: React.FC<SpeakingLabProps> = ({
   currentGrade,
@@ -133,6 +129,12 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
       setSpokenTranscript('');
       setDiffResult(null);
     }
+  }, [currentGrade]);
+
+  useEffect(() => {
+    const gradeTopic = CONVERSATION_TOPICS.find((topic) => topic.grade === currentGrade) || CONVERSATION_TOPICS[0];
+    setSelectedTopic(gradeTopic);
+    setChatMessages([{ id: 'grade-' + Date.now(), sender: 'ai', text: `Let's practise ${gradeTopic.title}. ${gradeTopic.prompt}` }]);
   }, [currentGrade]);
 
   // --- Pronunciation Methods ---
@@ -216,6 +218,8 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           topic: selectedTopic.title,
+          grade: currentGrade,
+          scenario: { role: selectedTopic.role, objective: selectedTopic.objective, vocabulary: selectedTopic.vocabulary, usefulExpressions: selectedTopic.phrases, followUp: selectedTopic.followUp },
           history: newHistory.map(m => ({ sender: m.sender, text: m.text })),
           userSpeech: textToSend
         })
@@ -462,7 +466,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
             </div>
 
             <div className="flex flex-wrap gap-1.5">
-              {CONVERSATION_TOPICS.map((top) => (
+              {CONVERSATION_TOPICS.filter((top) => top.grade === currentGrade).map((top) => (
                 <button
                   key={top.id}
                   onClick={() => {
@@ -579,63 +583,59 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
 
       {/* Mode C: Role-play Scenarios */}
       {activeTab === 'roleplay' && (
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-          <div>
-            <h3 className="font-bold text-slate-900 text-lg">Đóng vai tình huống giao tiếp (Role-play)</h3>
-            <p className="text-xs text-slate-500 mt-1">
-              Rèn luyện phản xạ thực tế trong các tình huống học thuật và phỏng vấn học bổng.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                title: 'Phỏng vấn Học bổng Du học',
-                role: 'Giám khảo phỏng vấn',
-                objective: 'Giới thiệu thế mạnh cá nhân và mục tiêu học ngành Khoa học / STEM',
-                starter: "Good afternoon! Could you tell us why you are passionate about studying science?"
-              },
-              {
-                title: 'Thuyết trình Dự án Môi trường',
-                role: 'Trọng tài Hội chợ Khoa học',
-                objective: 'Bảo vệ giải pháp tái chế rác thải hữu cơ tại trường học',
-                starter: "Your composting model looks intriguing. How do you measure the nitrogen output?"
-              },
-              {
-                title: 'Hỏi ý kiến Giáo viên bộ môn',
-                role: 'Giáo viên Tiếng Anh THPT',
-                objective: 'Xin lời khuyên về cách cải thiện điểm thi tốt nghiệp môn Tiếng Anh',
-                starter: "Hello! I noticed you are working hard. Which section of the exam worries you most?"
-              }
-            ].map((rp, i) => (
-              <div key={i} className="p-5 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col justify-between space-y-4">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md">
-                    Tình huống {i + 1}
-                  </span>
-                  <h4 className="font-bold text-slate-900 text-sm mt-2">{rp.title}</h4>
-                  <p className="text-xs text-slate-600 mt-1"><strong>Vai trò AI:</strong> {rp.role}</p>
-                  <p className="text-xs text-slate-500 mt-1"><strong>Mục tiêu:</strong> {rp.objective}</p>
+        <div className="space-y-5">
+          <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-purple-700">Curriculum-linked speaking bank</p>
+                <h3 className="mt-1 text-xl font-black text-slate-900">Phòng luyện nói theo tình huống · Lớp {currentGrade}</h3>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">Chọn tình huống, dùng cụm từ gợi ý rồi hội thoại với AI. Chủ đề bám các mạch thường gặp ở THPT; thứ tự và từ vựng chính xác còn phụ thuộc bộ sách trường đang học.</p>
+              </div>
+              <span className="w-fit rounded-full bg-purple-50 px-3 py-1.5 text-xs font-bold text-purple-700">{CONVERSATION_TOPICS.filter((topic) => topic.grade === currentGrade).length} tình huống</span>
+            </div>
+          </section>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {CONVERSATION_TOPICS.filter((scenario) => scenario.grade === currentGrade).map((scenario, index) => (
+              <article key={scenario.id} className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="rounded-lg bg-indigo-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-indigo-700">Tình huống {index + 1}</span>
+                  <span className="rounded-lg bg-emerald-50 px-2.5 py-1 text-[10px] font-bold text-emerald-700">{scenario.level}</span>
                 </div>
-
+                <h4 className="mt-3 text-base font-extrabold leading-snug text-slate-900">{scenario.title}</h4>
+                <p className="mt-1 text-xs font-semibold text-purple-700">{scenario.theme}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{scenario.objective}</p>
+                <div className="mt-4 rounded-xl bg-slate-50 p-3">
+                  <p className="text-[10px] font-extrabold uppercase tracking-wide text-slate-500">Vai trò AI</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-800">{scenario.role}</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">“{scenario.prompt}”</p>
+                </div>
+                <div className="mt-4">
+                  <p className="text-xs font-extrabold uppercase tracking-wide text-slate-500">Từ vựng theo chủ đề</p>
+                  <div className="mt-2 space-y-2">
+                    {scenario.vocabulary.map((item) => <div key={item.word} className="flex flex-col gap-0.5 text-sm sm:flex-row sm:items-start sm:justify-between"><span className="font-bold text-slate-800">{item.word}</span><span className="text-slate-500 sm:text-right">{item.meaningVi}</span></div>)}
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <p className="text-xs font-extrabold uppercase tracking-wide text-slate-500">Cụm từ nên dùng</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {scenario.phrases.map((phrase) => <span key={phrase} className="rounded-lg border border-sky-100 bg-sky-50 px-2 py-1 text-xs leading-5 text-sky-800">{phrase}</span>)}
+                  </div>
+                </div>
                 <button
                   onClick={() => {
+                    setSelectedTopic(scenario);
+                    setChatMessages([{ id: 'rp-' + Date.now(), sender: 'ai', text: `${scenario.prompt}\n\nTry to use: ${scenario.phrases.slice(0, 3).join(' / ')}\n\n${scenario.followUp}` }]);
+                    setUserInputText('');
                     setActiveTab('conversation');
-                    setChatMessages([
-                      {
-                        id: 'rp-' + Date.now(),
-                        sender: 'ai',
-                        text: rp.starter
-                      }
-                    ]);
                   }}
-                  className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-xs transition-colors"
+                  className="mt-5 min-h-11 w-full rounded-xl bg-purple-600 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
                 >
-                  Bắt đầu đóng vai →
+                  Luyện với AI ngay <span aria-hidden="true">→</span>
                 </button>
-              </div>
+              </article>
             ))}
           </div>
+          <p className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs leading-6 text-amber-900">Mẹo luyện tập: trả lời thành 3–5 câu, nêu ý chính, giải thích lý do và thêm một ví dụ. Hãy thử dùng ít nhất hai cụm từ gợi ý; AI có thể hỏi tiếp để bạn luyện phản xạ nhiều lượt.</p>
         </div>
       )}
     </div>
