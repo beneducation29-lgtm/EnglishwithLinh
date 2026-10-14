@@ -443,6 +443,58 @@ export const supplementaryEnglishLessons: EnglishLessonContent[] = [
       checklist: ['State a clear position.', 'Develop two reasons with examples.', 'Use an inversion structure accurately.', 'Suggest one practical learning habit.', 'Check paragraph cohesion and formal tone.']
     }
   }
+,
+  {
+    id: 'g10-u4-school-community', grade: 10, unit: 4, title: 'Making Our School Community Better', titleVi: 'Cùng xây dựng cộng đồng trường học tốt hơn', theme: 'School life and community', level: 'A2',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Describe a school or community need.', 'Make polite suggestions with could and should.', 'Explain the benefit of a practical action.'],
+    vocabulary: [
+      { word: 'take part in', ipa: '/teɪk pɑːt ɪn/', meaningVi: 'tham gia', example: 'Many students take part in the clean-up.', exampleVi: 'Nhiều học sinh tham gia buổi dọn vệ sinh.' },
+      { word: 'volunteer', ipa: '/ˌvɒlənˈtɪə/', meaningVi: 'tình nguyện', example: 'We volunteer to help younger students.', exampleVi: 'Chúng tôi tình nguyện giúp học sinh nhỏ hơn.' },
+      { word: 'improve', ipa: '/ɪmˈpruːv/', meaningVi: 'cải thiện', example: 'A reading corner can improve our library.', exampleVi: 'Góc đọc sách có thể cải thiện thư viện.' }
+    ],
+    grammar: { focus: 'Making suggestions', formula: 'We could / should + base verb. Why not + base verb...?', explanationVi: 'Could đưa ra ý tưởng nhẹ nhàng; should diễn đạt lời khuyên; sau cả hai dùng động từ nguyên mẫu.', examples: [{ en: 'We could start a book-sharing shelf.', vi: 'Chúng ta có thể bắt đầu một kệ chia sẻ sách.' }, { en: 'Students should keep the area clean.', vi: 'Học sinh nên giữ khu vực sạch sẽ.' }] },
+    reading: { title: 'One Small Change at School', text: 'A group of students noticed that many useful books were left unused at home. They suggested a book-exchange corner in the school library. Each student could bring a book and choose another one. The library teacher helped label the shelves and create simple borrowing rules. After a month, more students visited the library and shared recommendations. The project cost little but helped students learn from one another.', questions: [
+      { id: 'g10-u4-q1', prompt: 'What did the students suggest?', options: ['A new sports hall.', 'A book-exchange corner.', 'A longer school day.', 'A new computer room.'], answerIndex: 1, explanationVi: 'Các bạn đề xuất một góc đổi sách trong thư viện.' },
+      { id: 'g10-u4-q2', prompt: 'What was one result?', options: ['Fewer students read.', 'The library closed.', 'More students visited the library.', 'Books were thrown away.'], answerIndex: 2, explanationVi: 'Sau một tháng, nhiều học sinh đến thư viện hơn.' }
+    ] },
+    speaking: { scenario: 'Planning a small school improvement with a classmate', prompt: 'Suggest one change that would improve your school. Explain who could help and how students would benefit.', usefulExpressions: ['I think we could...', 'Why not...?', 'We would need...', 'This would help students to...'] },
+    writing: { task: 'Write 80–100 words proposing one practical activity to improve your school.', checklist: ['Describe one need.', 'Suggest a realistic activity.', 'Use two suggestion structures.', 'Explain an expected benefit.'] }
+  },
+  {
+    id: 'g11-u4-media-literacy', grade: 11, unit: 4, title: 'Think Before You Share', titleVi: 'Suy nghĩ trước khi chia sẻ thông tin', theme: 'Media literacy and digital citizenship', level: 'B1',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Evaluate whether an online claim is trustworthy.', 'Use passive forms to describe checking processes.', 'Respond politely to questionable information.'],
+    vocabulary: [
+      { word: 'misleading', ipa: '/ˌmɪsˈliːdɪŋ/', meaningVi: 'gây hiểu lầm', example: 'A misleading headline can hide important details.', exampleVi: 'Tiêu đề gây hiểu lầm có thể che giấu chi tiết quan trọng.' },
+      { word: 'verify', ipa: '/ˈverɪfaɪ/', meaningVi: 'xác minh', example: 'Facts should be verified before sharing.', exampleVi: 'Thông tin cần được xác minh trước khi chia sẻ.' },
+      { word: 'evidence', ipa: '/ˈevɪdəns/', meaningVi: 'bằng chứng', example: 'The report provides evidence for its claim.', exampleVi: 'Báo cáo cung cấp bằng chứng cho nhận định.' }
+    ],
+    grammar: { focus: 'Passive voice', formula: 'Subject + be + past participle (+ by agent).', explanationVi: 'Câu bị động nhấn mạnh hành động hoặc đối tượng chịu tác động. Chia be theo thì và dùng quá khứ phân từ.', examples: [{ en: 'The claim was shared by hundreds of users.', vi: 'Thông tin đã được hàng trăm người dùng chia sẻ.' }, { en: 'Details should be checked against reliable sources.', vi: 'Các chi tiết nên được đối chiếu với nguồn đáng tin cậy.' }] },
+    reading: { title: 'A Responsible Digital Citizen', text: 'A dramatic post can attract attention before anyone checks its accuracy. Responsible readers look for the original source, publication date and supporting evidence. They compare claims with credible reports and notice when a headline exaggerates. If information cannot be verified, they avoid presenting it as certain. Correcting a mistake politely can improve understanding without embarrassing another person.', questions: [
+      { id: 'g11-u4-q1', prompt: 'What should readers check?', options: ['Only the number of likes.', 'The source and supporting evidence.', 'Only the picture.', 'The comments first.'], answerIndex: 1, explanationVi: 'Người đọc nên kiểm tra nguồn và bằng chứng hỗ trợ.' },
+      { id: 'g11-u4-q2', prompt: 'Why correct a mistake politely?', options: ['To embarrass someone.', 'To improve understanding.', 'To get more followers.', 'To end discussion.'], answerIndex: 1, explanationVi: 'Sửa sai lịch sự giúp cải thiện sự hiểu biết.' }
+    ] },
+    speaking: { scenario: 'Responding to an unverified claim shared by a classmate', prompt: 'Explain how you would check a surprising online claim and respond if it were false.', usefulExpressions: ['Before sharing it, I would...', 'The claim should be checked against...', 'One reliable source is...', 'I would explain politely that...'] },
+    writing: { task: 'Write 120–150 words explaining three steps for checking online information.', checklist: ['Organise the steps clearly.', 'Use three vocabulary items.', 'Include a passive sentence.', 'Explain why checking sources matters.'] }
+  },
+  {
+    id: 'g12-u4-career-decisions', grade: 12, unit: 4, title: 'Making Informed Career Decisions', titleVi: 'Đưa ra lựa chọn nghề nghiệp có cơ sở', theme: 'Career planning and future readiness', level: 'B2',
+    skills: ['vocabulary', 'grammar', 'reading', 'speaking', 'writing'],
+    objectives: ['Compare career options using clear criteria.', 'Use mixed conditionals to connect past choices and present results.', 'Defend a realistic plan with evidence.'],
+    vocabulary: [
+      { word: 'transferable skill', ipa: '/trænsˈfɜːrəbl skɪl/', meaningVi: 'kỹ năng áp dụng ở nhiều lĩnh vực', example: 'Teamwork is a transferable skill.', exampleVi: 'Làm việc nhóm là kỹ năng hữu ích trong nhiều nghề.' },
+      { word: 'entry requirement', ipa: '/ˈentri rɪˌkwaɪəmənt/', meaningVi: 'điều kiện đầu vào', example: 'Check the programme entry requirements.', exampleVi: 'Hãy kiểm tra điều kiện đầu vào của chương trình.' },
+      { word: 'informed decision', ipa: '/ɪnˈfɔːmd dɪˈsɪʒən/', meaningVi: 'quyết định dựa trên thông tin', example: 'Reliable information supports an informed decision.', exampleVi: 'Thông tin đáng tin cậy hỗ trợ quyết định có cơ sở.' }
+    ],
+    grammar: { focus: 'Mixed conditionals', formula: 'If + past perfect, would + base verb (present result).', explanationVi: 'Câu điều kiện hỗn hợp có thể nối điều kiện trái thực tế trong quá khứ với kết quả hiện tại.', examples: [{ en: 'If I had explored more careers earlier, I would feel more confident now.', vi: 'Nếu trước đây tôi tìm hiểu nhiều nghề hơn, giờ tôi sẽ tự tin hơn.' }, { en: 'If she had practised interviews, she would be more prepared today.', vi: 'Nếu cô ấy đã luyện phỏng vấn, hôm nay cô ấy sẽ chuẩn bị tốt hơn.' }] },
+    reading: { title: 'Beyond the Job Title', text: 'Choosing a career involves more than selecting an impressive job title. Students can compare interests, strengths, training requirements, costs and working conditions. Speaking with people in a field and trying a small project can reveal whether daily work matches expectations. Since no plan predicts every change, decisions should be reviewed when new information appears. A thoughtful choice is supported by evidence, personal reflection and a realistic next step.', questions: [
+      { id: 'g12-u4-q1', prompt: 'What should students compare?', options: ['Only job titles.', 'Interests, strengths, costs and working conditions.', 'Only friends’ opinions.', 'Only starting salary.'], answerIndex: 1, explanationVi: 'Nên so sánh sở thích, điểm mạnh, chi phí và điều kiện làm việc.' },
+      { id: 'g12-u4-q2', prompt: 'Why review a career plan?', options: ['New information may change what is suitable.', 'Plans never change.', 'Popular choices are always best.', 'Costs do not matter.'], answerIndex: 0, explanationVi: 'Thông tin mới có thể làm thay đổi lựa chọn phù hợp.' }
+    ] },
+    speaking: { scenario: 'A mock career-guidance interview', prompt: 'Compare two study or career options, explain your criteria and identify one next step.', usefulExpressions: ['One factor I would prioritise is...', 'Compared with the other option...', 'The evidence I need is...', 'My next practical step is...'] },
+    writing: { task: 'Write 150–180 words comparing two study or career options and defending your preferred choice.', checklist: ['Compare at least three criteria.', 'Use one mixed conditional.', 'Support your choice with reasons.', 'Finish with a practical next step.'] }
+  }
 ];
 
 export function getSupplementaryLesson(id: string): EnglishLessonContent | undefined {
