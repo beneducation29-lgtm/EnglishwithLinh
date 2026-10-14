@@ -145,12 +145,13 @@ export default function App() {
           {currentTab === 'speaking' && (
             <SpeakingLab
               currentGrade={profile.grade}
-              onSessionComplete={(wordsSpoken) => {
+              onSessionComplete={(wordsSpoken, isNewSession = false) => {
                 const p = StorageService.getProfile();
-                p.skillStats.speaking.sessions += 1;
+                if (isNewSession) p.skillStats.speaking.sessions += 1;
                 p.skillStats.speaking.wordsSpoken = (p.skillStats.speaking.wordsSpoken || 0) + Math.max(0, wordsSpoken || 0);
                 StorageService.logStudyMinutes(2);
-                setProfile({ ...StorageService.getProfile() });
+                StorageService.saveProfile(p);
+                setProfile({ ...p });
               }}
             />
           )}
