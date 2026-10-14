@@ -293,7 +293,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
   // Session reflection uses only the learner's actual messages; it does not invent scores.
   const learnerMessages = chatMessages.filter((message) => message.sender === 'user');
   const learnerWordCount = learnerMessages.reduce((total, message) => {
-    const words = message.text.trim().match(/\\b[\\w'-]+\\b/g);
+    const words = message.text.trim().match(/\b[\w'-]+\b/g);
     return total + (words?.length || 0);
   }, 0);
   const usedTargetPhrases = selectedTopic.phrases.filter((phrase) =>
