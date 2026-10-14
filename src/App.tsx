@@ -149,8 +149,8 @@ export default function App() {
                 const p = StorageService.getProfile();
                 if (isNewSession) p.skillStats.speaking.sessions += 1;
                 p.skillStats.speaking.wordsSpoken = (p.skillStats.speaking.wordsSpoken || 0) + Math.max(0, wordsSpoken || 0);
-                StorageService.logStudyMinutes(2);
-                StorageService.saveProfile(p);
+                if (isNewSession) StorageService.logStudyMinutes(2);
+                else StorageService.saveProfile(p);
                 setProfile({ ...p });
               }}
             />
