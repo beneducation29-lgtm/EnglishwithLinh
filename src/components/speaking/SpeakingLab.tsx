@@ -169,7 +169,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
         setSpokenTranscript(transcript);
         const diff = SpeechService.comparePronunciation(currentSentence.text, transcript);
         setDiffResult(diff);
-        onSessionComplete(transcript.split(/\s+/).length);
+        onSessionComplete(transcript.split(/\s+/).length, true);
         StorageService.logStudyMinutes(2);
       };
 
