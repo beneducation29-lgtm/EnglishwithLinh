@@ -22,7 +22,7 @@ import { speakingScenarios } from './speakingScenarios';
 
 interface SpeakingLabProps {
   currentGrade: Grade;
-  onSessionComplete: (wordsSpoken: number) => void;
+  onSessionComplete: (wordsSpoken: number, isNewSession?: boolean) => void;
 }
 
 interface ConversationMessage {
@@ -99,6 +99,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
 
   // Recognition instance ref
   const recognitionRef = useRef<any>(null);
+  const conversationSessionCountedRef = useRef(false);
 
   useEffect(() => {
     setIsRecognitionSupported(SpeechService.isRecognitionAvailable());
@@ -135,6 +136,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
   useEffect(() => {
     const gradeTopic = CONVERSATION_TOPICS.find((topic) => topic.grade === currentGrade) || CONVERSATION_TOPICS[0];
     setSelectedTopic(gradeTopic);
+    conversationSessionCountedRef.current = false;
     setChatMessages([{ id: 'grade-' + Date.now(), sender: 'ai', text: `Let's practise ${gradeTopic.title}. ${gradeTopic.prompt}` }]);
   }, [currentGrade]);
 
@@ -241,7 +243,9 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
       setChatMessages(prev => [...prev, aiMsg]);
       // Play audio response automatically
       SpeechService.speakText(aiMsg.text, 1.0);
-      onSessionComplete(textToSend.split(/\s+/).length);
+      const isNewSession = !conversationSessionCountedRef.current;
+      conversationSessionCountedRef.current = true;
+      onSessionComplete(textToSend.split(/\s+/).length, isNewSession);
     } catch (e) {
       console.error('Conversation turn error:', e);
       const fallbackAi: ConversationMessage = {
@@ -517,6 +521,7 @@ export const SpeakingLab: React.FC<SpeakingLabProps> = ({
                   key={top.id}
                   onClick={() => {
                     setSelectedTopic(top);
+                    conversationSessionCountedRef.current = false;
                     setChatMessages([
                       {
                         id: 'm-' + Date.now(),
