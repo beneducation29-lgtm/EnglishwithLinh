@@ -174,25 +174,33 @@ Output JSON only conforming to the specified schema:
 // 3. Speaking Turn Conversation Route
 app.post('/api/gemini/conversation', async (req: Request, res: Response) => {
   try {
-    const { history, topic, userSpeech } = req.body;
+    const { history, topic, userSpeech, grade, scenario } = req.body;
     if (!ai) {
+      const fallbackQuestion = scenario?.followUp || 'Could you give a specific example?';
       return res.json({
-        reply: `That sounds very interesting! Could you tell me more about how you prepare for your high school science exams?`,
-        suggestedFollowUp: 'I usually review past papers and discuss with my study group.',
-        feedbackOnSpeech: 'Good pronunciation. Try to connect your sentences using "Moreover" or "In addition".',
+        reply: `That is a good start. Could you explain your idea a little more? ${fallbackQuestion}`,
+        suggestedFollowUp: fallbackQuestion,
+        feedbackOnSpeech: `Try to use one of these expressions naturally: ${(scenario?.usefulExpressions || ['In my opinion, ...', 'For example, ...']).slice(0, 2).join(' / ')}`,
         source: 'local_fallback'
       });
     }
 
-    const prompt = `You are a native English conversation partner in the "EnglishUp AI Speaking Club" for Vietnamese high school students.
-Topic: ${topic || 'High School Life & Career Goals'}.
+    const gradeNumber = Number(grade) || 11;
+    const targetLevel = gradeNumber === 10 ? 'A2 to early B1' : gradeNumber === 11 ? 'B1' : 'B1 to B2';
+    const scenarioContext = scenario ? JSON.stringify(scenario) : 'No extra scenario supplied';
+    const prompt = `You are a patient, encouraging English speaking partner and formative coach for Vietnamese high-school students.
+Student grade: ${gradeNumber}. Target speaking level: ${targetLevel}.
+Curriculum theme: ${topic || 'High School Life & Career Goals'}.
+Scenario card (role, goal, target vocabulary, useful expressions, follow-up): ${scenarioContext}.
 Conversation history: ${JSON.stringify(history || [])}.
-User said: "${userSpeech}".
-Guidelines:
-1. Respond naturally in 1-3 spoken English sentences appropriate for High School CEFR B1 level.
-2. Ask one engaging follow-up question.
-3. Keep the tone warm, encouraging, and clear.
-4. Provide a very brief tip in Vietnamese if there was a notable grammatical slip.`;
+Latest student turn: "${userSpeech}".
+Rules:
+1. Continue the exact scenario and play the role described in the scenario card. Never switch to an unrelated topic.
+2. Use natural, age-appropriate English aligned with common Vietnamese Grade ${gradeNumber} upper-secondary themes. For Grade 10 keep sentences short and accessible; Grade 11 can explain reasons and compare options; Grade 12 can support opinions with examples and respond to counterarguments.
+3. Reply in 1-3 spoken English sentences, then ask exactly one clear follow-up question that advances the role-play.
+4. Where natural, model or encourage one target word or useful expression from the scenario card without forcing all of them into every reply.
+5. Give a concise Vietnamese feedback tip only when useful: correct one important grammar/word-choice issue and show a better phrase. Do not invent pronunciation observations from text.
+6. Be supportive but do not claim a score or mastery unless an actual assessment was performed.`;
 
     const response = await ai.models.generateContent({
       model: 'gemini-3.8-flash',
